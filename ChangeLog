@@ -1,0 +1,10 @@
+2020-06-18         Arnold D. Robbins     <arnold@skeeve.com>
+
+	Initial commit.
+
+	* original-dformat.pdf: Original memo as found on the Internet.
+	* dformat.ms: Reconstituted memorandum.
+	* dformat.awk: Reconstituted awk program.
+	* trivial.sh: Reconstituted "trivial" implementation.
+	* README.md: README file in Markdown format.
+	* Makefile: The Makefile. What else would it be? :0-)
