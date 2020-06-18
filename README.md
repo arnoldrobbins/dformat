@@ -64,6 +64,11 @@ Finally, the `dash` alias for `dashed` did not work. I noted this in
 a footnote and simply replaced `dash` with `dashed` in both the
 real input and in the sample input shown in the memo.
 
+## Creating the Document
+
+If you have GNU `troff` installed, with its preprocessors, it
+should be enough to just type `make` to create `dformat.pdf`.
+
 ## Conclusion
 
 I'm pretty pleased with the result.  I'm making everything available on
@@ -71,4 +76,4 @@ GitHub so that others may also take advantage of this nice little program.
 
 #### Last Modified
 
-Thu Jun 18 10:28:49 IDT 2020
+Thu Jun 18 20:43:07 IDT 2020

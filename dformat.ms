@@ -44,6 +44,8 @@ Its implementation (about 100 lines of AWK) is included in this paper.\**
 .FS
 This is a reconstituted version of the memo, done by
 Arnold Robbins, \f(CWarnold@skeeve.com\fP, in June, 2020.
+It's available on GitHub, see
+.CW "https://github.com/arnoldrobbins/dformat" .
 .FE
 .AE
 .NH
@@ -768,33 +770,7 @@ nor does it place long strings below their boxes.
 .LP
 .ft CW
 .nf
-awk '
-inlang == 0 { if ($0 !~ /^\e.begin[ \et]/ || $2 != "dformat") print
-              else { inlang = 1; print ".PS"; boxacnt = 0 }
-              next
-            }
-/^\e.end/    { inlang = 0; print ".PE"; next }
-/^[^ \et]/   { printf "BoxA: box invis ht 0.3 wid 0"
-              if (boxacnt++) printf " with .n at BoxA.s - (0,0.15)"
-              printf "\en"
-              printf " \e"%s: \e" rjust at BoxA.w\en", $0
-              printf " BoxB: box invis ht 0.3 wid 0 at BoxA\en"
-              next
-           }
-/./        {
-              range = $1; $1 = ""
-              gsub(/^[ \et]+/, "", $0); gsub(/[ \et]+$/, "", $0); text = $0
-              n = split(range, x, "-")
-              rlo = x[1]
-              rhi = (n >= 2) ? x[2] : rlo
-              rwid = rhi - rlo + 1
-              printf " BoxB: box %s ht .3 wid %g with .w at BoxB.e\en",
-	              btype, rwid * .2
-              printf "    \e"%s\e" at BoxB.c\en", text
-              printf "\et\e" \e\es-4%s\e\es+4\e" ljust at BoxB.sw + (0,.06)\en", rlo
-              printf "\et\e"\e\es-4%s\e\es+4 \e" rjust at BoxB.se + (0,.06)\en", rhi
-           }
-\&' $*
+.so trivial.sh.tr
 .fi
 .ft R
 .LP
@@ -880,191 +856,7 @@ The complete program produces similar PIC output; here is the source code.
 .ft CW
 .nf
 .ps -2
-#! /bin/awk -f
-# mailto:jlb@research.bell-labs.com
-
-function error(s)
-{
-	print("dformat error: " s " near input line " NR) | "cat 1>&2"
-}
-
-BEGIN {
-	s = "recht 0.3 addrht 0.055 recspread 0.15 "
-	s = s "charwid 0.07 textht 0.167 addrdelta 4 "
-	s = s "bitwid 0.125 linedisp 0.04 addr both "
-	s = s "fill off linethrutext 1 "
-	s = s "shaded off"
-	n = split(s, x, FS)
-	for (i = 1; i <= n - 1; i += 2) oparm[x[i]] = parm[x[i]] = x[i + 1]
-}
-
-inlang == 0 {
-	if ($0 !~ /^\e.begin[ \et]/ || $2 != "dformat") {
-		print
-	} else {
-		inlang = 1
-		print ".PS"
-		boxacnt = 0
-		if (firstpic != 1) {
-			firstpic = 1
-			print "fillval = 0.1"
-		}
-	}
-	next
-}
-
-/^\e.end/ {
-	inlang = 0
-	print ".PE"
-	next
-}
-
-$1 == "style" {
-	if (! ($2 in parm)) {
-		error("unrecognized name: " $2)
-	} else if ($3 == "reset") {
-		t = oparm[$2]
-		oparm[$2] = parm[$2]
-		parm[$2] = t
-	} else {
-		oparm[$2] = parm[$2]
-		parm[$2] = $3
-		#error("set shaded to: " $3)
-	}
-	next
-}
-
-$1 == "pic" {
-	$1 = ""
-	print $0
-	next
-}
-
-/^[^ \et]/ {
-	printf "BoxA: box invis ht %g wid 0", parm["recht"]
-	if (boxacnt++) {
-		printf " with .n at BoxA.s - (0, %g)",
-		   parm["recspread"] + maxdy * parm["textht"]
-	}
-	printf "\en"
-
-	maxdy = sumboxlen = 0
-	gsub(/[ \et]+$/, "", $0)
-	if ($0 != "noname") {
-		printf " \e"%s \e" rjust at BoxA.w\en", $0
-		printf " box invis with .e at BoxA.w ht 0 wid %g\en",
-		    parm["charwid"] * (length($0) + 3)
-	}
-	printf " BoxB: box invis ht %g wid 0 at BoxA\en", parm["recht"]
-
-	next
-}
-
-/./ {
-	boxname = ""
-	if ($1 ~ /:$/) {
-		boxname = substr($1, 1, length($1) - 1)
-		$1 = ""
-		$0 = " " $0
-	}
-	range = $1
-	$1 = ""
-	gsub(/^[ \et]+/, "", $0)
-	gsub(/[ \et]+$/, "", $0)
-	text = $0
-
-	n = split(range, x, "-")
-	rlo = x[1]
-	rhi = (n >= 2) ? x[2] : rlo
-	cwid = (rhi >= rlo) ? rhi - rlo + 1 : rlo - rhi + 1
-	rwid = (n >= 3) ? (0 + x[3]) : cwid
-	btype = x[4]
-	if (btype !~ /^(dot|dash|invis)/) {
-		btype = "solid"
-	}
-
-	textlen = parm["charwid"] * length(text)
-	boxlen = parm["bitwid"] * rwid
-
-	dy = 0
-	if (textlen > boxlen) {
-		# set dy, the channel for this text
-		chan[maxdy + 1] = -999
-		for (dy = 1; chan[dy] + textlen > sumboxlen; dy++);
-		if (dy > maxdy) {
-			maxdy = dy
-		}
-		if (parm["linethrutext"] == 0) {
-			for (k = 1; k <= dy; k++) {
-				chan[k] = sumboxlen + boxlen
-			}
-		} else {
-			chan[dy] = sumboxlen
-		}
-	}
-	sumboxlen += boxlen
-	fill = ""
-
-	if (parm["fill"] == "on") {
-		fill = " fill "
-	}
-
-	shaded = ""
-	if (parm["shaded"] != "off") {
-		shaded = " shaded "
-		shaded = shaded "\e"" parm["shaded"] "\e" "
-	}
-
-	if (boxname != "") {
-		printf " %s:", boxname
-	}
-	printf "  BoxB: box %s %s %s ht %g wid %g with .w at BoxB.e\en",
-	   shaded, fill, btype, parm["recht"], boxlen
-
-	if (dy == 0) {
-		printf "    \e"%s\e" at BoxB.c\en", text
-	} else {
-		if (rwid < 2) {
-			start = "BoxB.s"
-		} else {
-			start = "BoxB.se - (" parm["linedisp"] ",0)"
-		}
-		printf "    line from %s down %g\en", start, dy * parm["textht"]
-		printf "    \e"%s\e\e|\e" at last line .s rjust\en", text
-		printf "    box invis with .e at last line .s ht 0 wid %g\en",
-		    textlen
-	}
-
-	if (parm["addr"] ~ /^(left|right|both)$/) {
-		dp = int(parm["addrdelta"])     # Delta Point size
-		if (dp < 0 || dp > 9) {
-			error("bad addrdelta value: " dp)
-		}
-
-		dah = parm["addrht"]            # Delta Addr Height
-		pb = parm["addr"]               # Parameter for Bits
-
-		if (rlo == rhi) {
-			printf "    \e"\e\es-%d%s\e\es+%d\e" at BoxB.s + (0,%g)\en",
-			   dp, rlo, dp, dah
-		} else {
-			if (pb == "left" || pb == "both") {
-				printf "\et\e"\e\e|\e\es-%d%s\e\es+%d\e" ljust at BoxB.sw + (0,%g)\en",
-				   dp, rlo, dp, dah
-			}
-			if (pb == "right" || pb == "both") {
-				printf "\et\e"\e\es-%d%s\e\es+%d\e\e|\e" rjust at BoxB.se + (0,%g)\en",
-				   dp, rhi, dp, dah
-			}
-		}
-	}
-}
-
-END {
-	if (inlang) {
-		error("eof inside begin/end")
-	}
-}
+.so dformat.awk.tr
 .ps +2
 .fi
 .ft R

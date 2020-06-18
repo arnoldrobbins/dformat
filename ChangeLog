@@ -1,5 +1,13 @@
 2020-06-18         Arnold D. Robbins     <arnold@skeeve.com>
 
+	* Makefile: Generate troffable versions of the programs for
+	inclusion by the memo. Add the generated files to the `clean' target.
+	* dformat.ms: Include the generated files instead of having the
+	code directly in the memo.
+	* README.md: Add instructions to run `make'.
+
+2020-06-18         Arnold D. Robbins     <arnold@skeeve.com>
+
 	Initial commit.
 
 	* original-dformat.pdf: Original memo as found on the Internet.
