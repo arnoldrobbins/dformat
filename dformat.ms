@@ -367,14 +367,17 @@ This table contains a complete list of available parameters.
 .EQ
 delim @@
 .EN
+.KS
+.ps -1
+.vs -1
 .TS
 delim(@@) center;
 c | c | c
 c | c | c
 l | l | l.
 =
-N\s-1AME\s0	I\s-1NITIAL\s0	E\s-1XPLANATION\s0
-\^	V\s-1ALUE\s0	\^
+N\s-2AME\s0	I\s-2NITIAL\s0	E\s-2XPLANATION\s0
+\^	V\s-2ALUE\s0	\^
 _
 bitwid	0.125	Width of 1 bit in inches
 charwid	0.07	Width of 1 character in inches
@@ -390,6 +393,9 @@ fill	off	On to fill boxes, off for unfilled boxes
 shaded	off	color spec to fill boxes, off for unfilled boxes
 _
 .TE
+.ps +1
+.vs +1
+.KE
 .LP
 The variables
 .CW addrht
@@ -443,19 +449,26 @@ The single integer 4 is an
 abbreviation for the single-bit range 4-4.
 These two formats account for most fields, but two other kinds of
 specifications support more exotic fields:
+.sp .5
+.KS
+.ps -1
+.vs -1
 .TS
 center;
 l | c
 l | l.
 =
-F\s-1ORMAT\s0	I\s-1NTERPRETATION\s0
+F\s-2ORMAT\s0	I\s-2NTERPRETATION\s0
 _
-@i@	Field @i..i@, width 1
-@i-j@	Field @i..j@, width @j - i + 1@
-@l-r-w@	Field @l..r@, width @w@
-@l-r-w-t@	Field @l..r@, width @w@, box type @t@
+@i@	Field @i@..@i@, width 1
+@i@-@j@	Field @i@..@j@, width @j - i + 1@
+@l@-@r@-@w@	Field @l@..@r@, width @w@
+@l@-@r@-@w@-@t@	Field @l@..@r@, width @w@, box type @t@
 _
 .TE
+.ps +1
+.vs +1
+.KE
 .LP
 The variables
 .I i

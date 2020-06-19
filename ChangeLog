@@ -1,3 +1,8 @@
+2020-06-19         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* dformat.ms: Small troff changes around the tables, based
+	on JLB's original memo.
+
 2020-06-18         Arnold D. Robbins     <arnold@skeeve.com>
 
 	* Makefile: Generate troffable versions of the programs for
