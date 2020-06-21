@@ -40,13 +40,7 @@ PDP-8 Instr
 .RE
 .LP
 DFORMAT is implemented as a preprocessor for the PIC language.
-Its implementation (about 100 lines of AWK) is included in this paper.\**
-.FS
-This is a reconstituted version of the memo, done by
-Arnold Robbins, \f(CWarnold@skeeve.com\fP, in June, 2020.
-It's available on GitHub, see
-.CW "https://github.com/arnoldrobbins/dformat" .
-.FE
+Its implementation (about 100 lines of AWK) is included in this paper.
 .AE
 .NH
 Simple Pictures
@@ -491,11 +485,7 @@ has left index ``lo'', right index ``hi'' and width 3 bits.
 Under the fourth format, each field may be given a
 type of ``dotted'' or ``dashed'' or ``solid''
 (as in PIC, ``dot'' and ``dash'' are acceptable abbreviations).
-These conventions are illustrated in this nonsense figure\**
-.FS
-ADR: The figure was omitted from the original. I have restored it.
-Also, I have not been able to get the ``dash'' abbreviation to work.
-.FE
+These conventions are illustrated in this nonsense figure
 .begin dformat
 style bitwid .3
 noname
@@ -679,14 +669,7 @@ a little crowded).
 .PP
 The next figure shows the packets used in a data communications
 network. It represents the most complex kind of figure that can (well,
-more accurately, should) be drawn with DFORMAT. The description uses
-complex field descriptions, named fields, PIC pass-throughs, and
-embedded EQN.\**
-.FS
-ADR: The original memo did not have the actual figure.
-As it's pretty cool, I've included it. I also had to tweak
-the input a bit to get GNU PIC to accept it.
-.FE
+more accurately, should) be drawn with DFORMAT.
 .begin dformat
 style bitwid 0.08
 style charwid 0
@@ -722,7 +705,8 @@ pic line dotted from B1.sw to B2.nw
 pic line dotted from B1.se to B3.ne
 .end
 .LP
-It was created with this:
+The description uses complex field descriptions, named fields, PIC
+pass-throughs, and embedded EQN.
 .EQ
 delim off
 .EN
@@ -868,9 +852,9 @@ The complete program produces similar PIC output; here is the source code.
 .RS
 .ft CW
 .nf
-.ps -2
+.ps -1
 .so dformat.awk.tr
-.ps +2
+.ps +1
 .fi
 .ft R
 .RE
@@ -924,3 +908,24 @@ The
 style parameter now permits filled boxes, and the
 .CW linethrutext
 parameter avoids lines that pass through text.
+.SH
+Addendum (by Arnold Robbins)
+.PP
+This memorandum was originally published as Bell Labs
+Computing Science Technical Report 142, in April of 1988.
+.PP
+Arnold Robbins, \f(CWarnold@skeeve.com\fP,
+reconstituted the memorandum
+in June, 2020.
+It's available on GitHub, see
+.CW "https://github.com/arnoldrobbins/dformat" .
+.PP
+Part of the reconstitution process involved restoring two figures that were
+present in the original but were missing from the PDF from
+which Arnold started.
+.PP
+Also, he was unable to get the ``dash'' abbreviation to work, so
+.CW dash
+was replaced with
+.CW dashed
+in this version of the document.

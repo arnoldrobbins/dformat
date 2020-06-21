@@ -1,3 +1,11 @@
+2020-06-21         Arnold D. Robbins     <arnold@skeeve.com>
+
+	* dformat.ms: Move notes and history to an addendum section.
+	* 142.ps: New file.
+	* little-languages-for-pictures-in-awk.pdf: New file.
+	* jlb/*: New files, from Jon Bentley.
+	* README.md: Updated.
+
 2020-06-19         Arnold D. Robbins     <arnold@skeeve.com>
 
 	* dformat.ms: Small troff changes around the tables, based

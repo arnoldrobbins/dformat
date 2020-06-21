@@ -11,7 +11,7 @@ the program.
 preprocessor.
 
 It's of interest to me since it's written in `awk`.  It's been
-around since sometime in the 1990s, but I've only ever seen either
+around since 1988, but I've only ever seen either
 PostScript or PDF versions of the memo.
 
 I've often wanted to at least extract the `awk` program and make it
@@ -63,6 +63,21 @@ in the PDF file. This too I corrected.
 Finally, the `dash` alias for `dashed` did not work. I noted this in
 a footnote and simply replaced `dash` with `dashed` in both the
 real input and in the sample input shown in the memo.
+
+## Other Files Here
+
+The original version of the memorandum was published as Bell Labs
+Computing Science Technical Report 142.  The file `142.ps` is this
+original memorandum.
+
+Jon Bentley was kind enough to send me his original `troff` and `awk`
+source; they are included in the `jlb` directory.
+
+Jon also pointed me at an article he wrote, published in the AT&T
+Technical Journal, called
+[&ldquo;Little Languages for Pictures in awk,''](https://vdocuments.mx/little-languages-for-pictures-in-awk.html).
+I've included a copy here for convenience in the file
+`little-languages-for-pictures-in-awk.pdf`.
 
 ## Creating the Document
 

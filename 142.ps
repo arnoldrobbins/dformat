@@ -1,0 +1,2688 @@
+%!PS
+%%Version: 3.3.1
+%%DocumentFonts: (atend)
+%%Pages: (atend)
+%%EndComments
+%
+% Version 3.3.1 prologue for troff files.
+%
+
+/#copies 1 store
+/aspectratio 1 def
+/formsperpage 1 def
+/landscape false def
+/linewidth .3 def
+/magnification 1 def
+/margin 0 def
+/orientation 0 def
+/resolution 720 def
+/rotation 1 def
+/xoffset 0 def
+/yoffset 0 def
+
+/roundpage true def
+/useclippath true def
+/pagebbox [0 0 612 792] def
+
+/R  /Times-Roman def
+/I  /Times-Italic def
+/B  /Times-Bold def
+/BI /Times-BoldItalic def
+/H  /Helvetica def
+/HI /Helvetica-Oblique def
+/HB /Helvetica-Bold def
+/HX /Helvetica-BoldOblique def
+/CW /Courier def
+/CO /Courier def
+/CI /Courier-Oblique def
+/CB /Courier-Bold def
+/CX /Courier-BoldOblique def
+/PA /Palatino-Roman def
+/PI /Palatino-Italic def
+/PB /Palatino-Bold def
+/PX /Palatino-BoldItalic def
+/Hr /Helvetica-Narrow def
+/Hi /Helvetica-Narrow-Oblique def
+/Hb /Helvetica-Narrow-Bold def
+/Hx /Helvetica-Narrow-BoldOblique def
+/KR /Bookman-Light def
+/KI /Bookman-LightItalic def
+/KB /Bookman-Demi def
+/KX /Bookman-DemiItalic def
+/AR /AvantGarde-Book def
+/AI /AvantGarde-BookOblique def
+/AB /AvantGarde-Demi def
+/AX /AvantGarde-DemiOblique def
+/NR /NewCenturySchlbk-Roman def
+/NI /NewCenturySchlbk-Italic def
+/NB /NewCenturySchlbk-Bold def
+/NX /NewCenturySchlbk-BoldItalic def
+/ZD /ZapfDingbats def
+/ZI /ZapfChancery-MediumItalic def
+/S  /S def
+/S1 /S1 def
+/GR /Symbol def
+
+/inch {72 mul} bind def
+/min {2 copy gt {exch} if pop} bind def
+
+/setup {
+	counttomark 2 idiv {def} repeat pop
+
+	landscape {/orientation 90 orientation add def} if
+	/scaling 72 resolution div def
+	linewidth setlinewidth
+	1 setlinecap
+
+	pagedimensions
+	xcenter ycenter translate
+	orientation rotation mul rotate
+	width 2 div neg height 2 div translate
+	xoffset inch yoffset inch neg translate
+	margin 2 div dup neg translate
+	magnification dup aspectratio mul scale
+	scaling scaling scale
+
+	addmetrics
+	0 0 moveto
+} def
+
+/pagedimensions {
+	useclippath userdict /gotpagebbox known not and {
+		/pagebbox [clippath pathbbox newpath] def
+		roundpage currentdict /roundpagebbox known and {roundpagebbox} if
+	} if
+	pagebbox aload pop
+	4 -1 roll exch 4 1 roll 4 copy
+	landscape {4 2 roll} if
+	sub /width exch def
+	sub /height exch def
+	add 2 div /xcenter exch def
+	add 2 div /ycenter exch def
+	userdict /gotpagebbox true put
+} def
+
+/addmetrics {
+	/Symbol /S null Sdefs cf
+	/Times-Roman /S1 StandardEncoding dup length array copy S1defs cf
+} def
+
+/pagesetup {
+	/page exch def
+	currentdict /pagedict known currentdict page known and {
+		page load pagedict exch get cvx exec
+	} if
+} def
+
+/decodingdefs [
+	{counttomark 2 idiv {y moveto show} repeat}
+	{neg /y exch def counttomark 2 idiv {y moveto show} repeat}
+	{neg moveto {2 index stringwidth pop sub exch div 0 32 4 -1 roll widthshow} repeat}
+	{neg moveto {spacewidth sub 0.0 32 4 -1 roll widthshow} repeat}
+	{counttomark 2 idiv {y moveto show} repeat}
+	{neg setfunnytext}
+] def
+
+/setdecoding {/t decodingdefs 3 -1 roll get bind def} bind def
+
+/w {neg moveto show} bind def
+/m {neg dup /y exch def moveto} bind def
+/done {/lastpage where {pop lastpage} if} def
+
+/f {
+	dup /font exch def findfont exch
+	dup /ptsize exch def scaling div dup /size exch def scalefont setfont
+	linewidth ptsize mul scaling 10 mul div setlinewidth
+	/spacewidth ( ) stringwidth pop def
+} bind def
+
+/changefont {
+	/fontheight exch def
+	/fontslant exch def
+	currentfont [
+		1 0
+		fontheight ptsize div fontslant sin mul fontslant cos div
+		fontheight ptsize div
+		0 0
+	] makefont setfont
+} bind def
+
+/sf {f} bind def
+
+/cf {
+	dup length 2 idiv
+	/entries exch def
+	/chtab exch def
+	/newencoding exch def
+	/newfont exch def
+
+	findfont dup length 1 add dict
+	/newdict exch def
+	{1 index /FID ne {newdict 3 1 roll put}{pop pop} ifelse} forall
+
+	newencoding type /arraytype eq {newdict /Encoding newencoding put} if
+
+	newdict /Metrics entries dict put
+	newdict /Metrics get
+	begin
+		chtab aload pop
+		1 1 entries {pop def} for
+		newfont newdict definefont pop
+	end
+} bind def
+
+%
+% A few arrays used to adjust reference points and character widths in some
+% of the printer resident fonts. If square roots are too high try changing
+% the lines describing /radical and /radicalex to,
+%
+%	/radical	[0 -75 550 0]
+%	/radicalex	[-50 -75 500 0]
+%
+% Move braceleftbt a bit - default PostScript character is off a bit.
+%
+
+/Sdefs [
+	/bracketlefttp		[201 500]
+	/bracketleftbt		[201 500]
+	/bracketrighttp		[-81 380]
+	/bracketrightbt		[-83 380]
+	/braceleftbt		[203 490]
+	/bracketrightex		[220 -125 500 0]
+	/radical		[0 0 550 0]
+	/radicalex		[-50 0 500 0]
+	/parenleftex		[-20 -170 0 0]
+	/integral		[100 -50 500 0]
+	/infinity		[10 -75 730 0]
+] def
+
+/S1defs [
+	/underscore		[0 80 500 0]
+	/endash			[7 90 650 0]
+] def
+%
+% Tries to round clipping path dimensions, as stored in array pagebbox, so they
+% match one of the known sizes in the papersizes array. Lower left coordinates
+% are always set to 0.
+%
+
+/roundpagebbox {
+    7 dict begin
+	/papersizes [8.5 inch 11 inch 14 inch 17 inch] def
+
+	/mappapersize {
+		/val exch def
+		/slop .5 inch def
+		/diff slop def
+		/j 0 def
+		0 1 papersizes length 1 sub {
+			/i exch def
+			papersizes i get val sub abs
+			dup diff le {/diff exch def /j i def} {pop} ifelse
+		} for
+		diff slop lt {papersizes j get} {val} ifelse
+	} def
+
+	pagebbox 0 0 put
+	pagebbox 1 0 put
+	pagebbox dup 2 get mappapersize 2 exch put
+	pagebbox dup 3 get mappapersize 3 exch put
+    end
+} bind def
+
+%%EndProlog
+%%BeginSetup
+mark
+/resolution 720 def
+setup
+2 setdecoding
+%%EndSetup
+%%Page: 0 1
+/saveobj save def
+mark
+1 pagesetup
+10 R f
+(AT&T Bell Laboratories)2 993 1 2383 1740 t
+(600 Mountain Avenue)2 899 1 2430 1860 t
+(Murray Hill, NJ 07974)3 916 1 2422 1980 t
+(Computing Science Technical Report No. 142)5 1848 1 1956 3180 t
+12 B f
+(DFORMAT \320 A Program for Typesetting Data Formats)7 2926 1 1417 3450 t
+10 I f
+(Jon L. Bentley)2 574 1 2593 3690 t
+10 R f
+(April, 1988)1 461 1 720 6240 t
+cleartomark
+showpage
+saveobj restore
+%%EndPage: 0 1
+%%Page: 0 2
+/saveobj save def
+mark
+2 pagesetup
+12 B f
+(DFORMAT \320 A Program for Typesetting Data Formats)7 2926 1 1417 1230 t
+10 I f
+(Jon L. Bentley)2 574 1 2593 1470 t
+10 R f
+(AT&T Bell Laboratories)2 993 1 2383 1650 t
+(600 Mountain Avenue)2 899 1 2430 1770 t
+(Murray Hill, NJ 07974)3 916 1 2422 1890 t
+10 I f
+(ABSTRACT)2643 2390 w
+10 R f
+( packets on a data network are often)7 1479(Data formats ranging from computer words to)6 1871 2 1330 2650 t
+( instruc-)1 331( PDP-8, for instance, uses this)5 1212( The)1 207(described by pictures composed of rectangles.)5 1850 4 1080 2770 t
+(tion format:)1 475 1 1080 2890 t
+(PDP-8 Instr)1 475 1 1231 3180 t
+cleartomark
+saveobj restore
+%%BeginGlobal
+%
+% Version 3.3.1 drawing procedures for dpost. Automatically pulled in when
+% needed.
+%
+
+/inpath false def
+/savematrix matrix def
+
+/Dl {
+	inpath
+		{pop pop neg lineto}
+		{newpath neg moveto neg lineto stroke}
+	ifelse
+} bind def
+
+/De {
+	/y1 exch 2 div def
+	/x1 exch 2 div def
+	/savematrix savematrix currentmatrix def
+	neg exch x1 add exch translate
+	x1 y1 scale
+	0 0 1 0 360
+	inpath
+		{1 0 moveto arc savematrix setmatrix}
+		{newpath arc savematrix setmatrix stroke}
+	ifelse
+} bind def
+
+/Da {
+	/dy2 exch def
+	/dx2 exch def
+	/dy1 exch def
+	/dx1 exch def
+	dy1 add neg exch dx1 add exch
+	dx1 dx1 mul dy1 dy1 mul add sqrt
+	dy1 dx1 neg atan
+	dy2 neg dx2 atan
+	inpath
+		{arc}
+		{newpath arc stroke}
+	ifelse
+} bind def
+
+/DA {
+	/dy2 exch def
+	/dx2 exch def
+	/dy1 exch def
+	/dx1 exch def
+	dy1 add neg exch dx1 add exch
+	dx1 dx1 mul dy1 dy1 mul add sqrt
+	dy1 dx1 neg atan
+	dy2 neg dx2 atan
+	inpath
+		{arcn}
+		{newpath arcn stroke}
+	ifelse
+} bind def
+
+/Ds {
+	/y2 exch def
+	/x2 exch def
+	/y1 exch def
+	/x1 exch def
+	/y0 exch def
+	/x0 exch def
+	x0 5 x1 mul add 6 div
+	y0 5 y1 mul add -6 div
+	x2 5 x1 mul add 6 div
+	y2 5 y1 mul add -6 div
+	x1 x2 add 2 div
+	y1 y2 add -2 div
+	inpath
+		{curveto}
+		{newpath x0 x1 add 2 div y0 y1 add -2 div moveto curveto stroke}
+	ifelse
+} bind def
+%%EndGlobal
+/saveobj save def
+mark
+10 R f
+1756 3052 1756 3268 Dl
+2404 3052 1756 3052 Dl
+2404 3268 2404 3052 Dl
+1756 3268 2404 3268 Dl
+(Op Code)1 358 1 1901 3180 t
+6 R f
+(0 2)1 616 1 1772 3248 t
+10 R f
+2404 3052 2404 3268 Dl
+2620 3052 2404 3052 Dl
+2620 3268 2620 3052 Dl
+2404 3268 2620 3268 Dl
+2512 3388 2512 3268 Dl
+(Indirect Bit)1 458 1 2038 3408 t
+6 R f
+(3)2497 3248 w
+10 R f
+2620 3052 2620 3268 Dl
+2836 3052 2620 3052 Dl
+2836 3268 2836 3052 Dl
+2620 3268 2836 3268 Dl
+2728 3508 2728 3268 Dl
+(Page-Zero Bit)1 563 1 2149 3528 t
+6 R f
+(4)2713 3248 w
+10 R f
+2836 3052 2836 3268 Dl
+4348 3052 2836 3052 Dl
+4348 3268 4348 3052 Dl
+2836 3268 4348 3268 Dl
+(Page Address)1 546 1 3319 3180 t
+6 R f
+(5 11)1 1480 1 2852 3248 t
+10 R f
+( included in TROFF documents.)4 1356(The DFORMAT program allows such diagrams to be)7 2244 2 1080 3706 t
+(The above diagram is described as)5 1377 1 1080 3826 t
+9 CW f
+(.begin dformat)1 756 1 1440 3996 t
+(style bitwid .3)2 810 1 1440 4106 t
+(PDP-8 Instr)1 594 1 1440 4216 t
+(0-2 Op Code)2 594 1 1872 4326 t
+(3 Indirect Bit)2 756 1 1872 4436 t
+(4 Page-Zero Bit)2 810 1 1872 4546 t
+(5-11 Page Address)2 918 1 1872 4656 t
+(.end)1440 4766 w
+10 R f
+( implementation)1 661( Its)1 158(DFORMAT is implemented as a preprocessor for the PIC language.)9 2781 3 1080 4946 t
+(\(about 100 lines of AWK\) is included in this paper.)9 2053 1 1080 5066 t
+(April, 1988)1 461 1 720 5546 t
+cleartomark
+showpage
+saveobj restore
+%%EndPage: 0 2
+%%Page: 1 3
+/saveobj save def
+mark
+3 pagesetup
+12 B f
+(DFORMAT \320 A Program for Typesetting Data Formats)7 2926 1 1417 1230 t
+10 I f
+(Jon L. Bentley)2 574 1 2593 1470 t
+10 R f
+(AT&T Bell Laboratories)2 993 1 2383 1650 t
+(600 Mountain Avenue)2 899 1 2430 1770 t
+(Murray Hill, NJ 07974)3 916 1 2422 1890 t
+10 B f
+( Pictures)1 374(1. Simple)1 420 2 720 2250 t
+10 R f
+( and)1 175(This picture shows the format that the IBM System/360 uses for storing short integers, integers,)14 3895 2 970 2406 t
+(\257oating-point numbers \(or shorts, ints, and \257oats, in C terminology\):)9 2745 1 720 2526 t
+(Short)1432 2816 w
+1699 2688 1699 2904 Dl
+1785 2688 1699 2688 Dl
+1785 2904 1785 2688 Dl
+1699 2904 1785 2904 Dl
+(S)1714 2816 w
+6 R f
+(0)1727 2884 w
+10 R f
+1785 2688 1785 2904 Dl
+3081 2688 1785 2688 Dl
+3081 2904 3081 2688 Dl
+1785 2904 3081 2904 Dl
+(Integer)2292 2816 w
+6 R f
+(1 15)1 1264 1 1801 2884 t
+10 R f
+(Int)1538 3140 w
+1699 3012 1699 3228 Dl
+1785 3012 1699 3012 Dl
+1785 3228 1785 3012 Dl
+1699 3228 1785 3228 Dl
+(S)1714 3140 w
+6 R f
+(0)1727 3208 w
+10 R f
+1785 3012 1785 3228 Dl
+4463 3012 1785 3012 Dl
+4464 3228 4464 3012 Dl
+1786 3228 4464 3228 Dl
+(Integer)2983 3140 w
+6 R f
+(1 31)1 2647 1 1801 3208 t
+10 R f
+(Float)1443 3464 w
+1699 3336 1699 3552 Dl
+1785 3336 1699 3336 Dl
+1785 3552 1785 3336 Dl
+1699 3552 1785 3552 Dl
+(S)1714 3464 w
+6 R f
+(0)1727 3532 w
+10 R f
+1785 3336 1785 3552 Dl
+2389 3336 1785 3336 Dl
+2390 3552 2390 3336 Dl
+1786 3552 2390 3552 Dl
+(Exponent)1897 3464 w
+6 R f
+(1 7)1 573 1 1801 3532 t
+10 R f
+2390 3336 2390 3552 Dl
+4463 3336 2390 3336 Dl
+4464 3552 4464 3336 Dl
+2391 3552 4464 3552 Dl
+(Fraction)3261 3464 w
+6 R f
+(8 31)1 2042 1 2406 3532 t
+10 R f
+( a)1 74(Each line describes)2 778 2 720 3750 t
+10 I f
+(record)1602 3750 w
+10 R f
+(that contains several)2 825 1 1898 3750 t
+10 I f
+(\256elds)2753 3750 w
+10 R f
+( \256gure was described by this text in the input)9 1841(. The)1 235 2 2964 3750 t
+(\256le:)720 3870 w
+9 CW f
+(.begin dformat)1 756 1 1080 4040 t
+(style bitwid 0.12)2 918 1 1080 4150 t
+(Short)1080 4260 w
+(0 S)1 162 1 1512 4370 t
+(1-15 Integer)1 648 1 1512 4480 t
+(Int)1080 4590 w
+(0 S)1 162 1 1512 4700 t
+(1-31 Integer)1 648 1 1512 4810 t
+(Float)1080 4920 w
+(0 S)1 162 1 1512 5030 t
+(1-7 Exponent)1 648 1 1512 5140 t
+(8-31 Fraction)1 702 1 1512 5250 t
+(.end)1080 5360 w
+10 R f
+(The)720 5540 w
+10 CW f
+(.begin dformat)1 806 1 901 5540 t
+10 R f
+(and)1733 5540 w
+10 CW f
+(.end)1903 5540 w
+10 R f
+( The)1 206(lines delimit the DFORMAT input.)4 1419 2 2169 5540 t
+10 CW f
+(style)3820 5540 w
+10 R f
+( bits are)2 320(line states that)2 574 2 4146 5540 t
+( that start in column 1 name the records; subsequent lines that begin)12 2822( Lines)1 281( 0.12 inches wide.)3 751(rendered as)1 466 4 720 5660 t
+( DFORMAT is a PIC preprocessor, the)6 1574( Because)1 384( widths and names, in order.)5 1139(with white space give the \256eld)5 1223 4 720 5780 t
+(document is compiled with a pipeline like)6 1677 1 720 5900 t
+9 CW f
+(dformat paper.in | pic | tbl | eqn | troff -ms >paper.out)11 3078 1 1080 6070 t
+10 R f
+(The System/360 has \256ve instruction formats:)5 1797 1 970 6286 t
+cleartomark
+showpage
+saveobj restore
+%%EndPage: 1 3
+%%Page: 2 4
+/saveobj save def
+mark
+4 pagesetup
+10 R f
+(- 2 -)2 166 1 2797 480 t
+(RR)1440 968 w
+1624 840 1624 1056 Dl
+2084 840 1624 840 Dl
+2084 1056 2084 840 Dl
+1624 1056 2084 1056 Dl
+(Opcode)1699 968 w
+6 R f
+(0 7)1 428 1 1640 1036 t
+10 R f
+2084 840 2084 1056 Dl
+2314 840 2084 840 Dl
+2315 1056 2315 840 Dl
+2085 1056 2315 1056 Dl
+(R1)2142 968 w
+6 R f
+(8 11)1 199 1 2100 1036 t
+10 R f
+2315 840 2315 1056 Dl
+2545 840 2315 840 Dl
+2545 1056 2545 840 Dl
+2315 1056 2545 1056 Dl
+(R2)2372 968 w
+6 R f
+(12 15)1 198 1 2331 1036 t
+10 R f
+(RX)1435 1292 w
+1624 1164 1624 1380 Dl
+2084 1164 1624 1164 Dl
+2084 1380 2084 1164 Dl
+1624 1380 2084 1380 Dl
+(Opcode)1699 1292 w
+6 R f
+(0 7)1 428 1 1640 1360 t
+10 R f
+2084 1164 2084 1380 Dl
+2314 1164 2084 1164 Dl
+2315 1380 2315 1164 Dl
+2085 1380 2315 1380 Dl
+(R1)2142 1292 w
+6 R f
+(8 11)1 199 1 2100 1360 t
+10 R f
+2315 1164 2315 1380 Dl
+2545 1164 2315 1164 Dl
+2545 1380 2545 1164 Dl
+2315 1380 2545 1380 Dl
+(X2)2369 1292 w
+6 R f
+(12 15)1 198 1 2331 1360 t
+10 R f
+2545 1164 2545 1380 Dl
+2775 1164 2545 1164 Dl
+2776 1380 2776 1164 Dl
+2546 1380 2776 1380 Dl
+(B2)2602 1292 w
+6 R f
+(16 19)1 199 1 2561 1360 t
+10 R f
+2776 1164 2776 1380 Dl
+3467 1164 2776 1164 Dl
+3467 1380 3467 1164 Dl
+2776 1380 3467 1380 Dl
+(D2)3060 1292 w
+6 R f
+(20 31)1 659 1 2792 1360 t
+10 R f
+(RS)1451 1616 w
+1624 1488 1624 1704 Dl
+2084 1488 1624 1488 Dl
+2084 1704 2084 1488 Dl
+1624 1704 2084 1704 Dl
+(Opcode)1699 1616 w
+6 R f
+(0 7)1 428 1 1640 1684 t
+10 R f
+2084 1488 2084 1704 Dl
+2314 1488 2084 1488 Dl
+2315 1704 2315 1488 Dl
+2085 1704 2315 1704 Dl
+(R1)2142 1616 w
+6 R f
+(8 11)1 199 1 2100 1684 t
+10 R f
+2315 1488 2315 1704 Dl
+2545 1488 2315 1488 Dl
+2545 1704 2545 1488 Dl
+2315 1704 2545 1704 Dl
+(R3)2372 1616 w
+6 R f
+(12 15)1 198 1 2331 1684 t
+10 R f
+2545 1488 2545 1704 Dl
+2775 1488 2545 1488 Dl
+2776 1704 2776 1488 Dl
+2546 1704 2776 1704 Dl
+(B2)2602 1616 w
+6 R f
+(16 19)1 199 1 2561 1684 t
+10 R f
+2776 1488 2776 1704 Dl
+3467 1488 2776 1488 Dl
+3467 1704 3467 1488 Dl
+2776 1704 3467 1704 Dl
+(D2)3060 1616 w
+6 R f
+(20 31)1 659 1 2792 1684 t
+10 R f
+(SI)1485 1940 w
+1624 1812 1624 2028 Dl
+2084 1812 1624 1812 Dl
+2084 2028 2084 1812 Dl
+1624 2028 2084 2028 Dl
+(Opcode)1699 1940 w
+6 R f
+(0 7)1 428 1 1640 2008 t
+10 R f
+2084 1812 2084 2028 Dl
+2544 1812 2084 1812 Dl
+2545 2028 2545 1812 Dl
+2085 2028 2545 2028 Dl
+2516 2148 2516 2028 Dl
+(Immediate Op)1 574 1 1926 2168 t
+6 R f
+(8 15)1 429 1 2100 2008 t
+10 R f
+2545 1812 2545 2028 Dl
+2775 1812 2545 1812 Dl
+2776 2028 2776 1812 Dl
+2546 2028 2776 2028 Dl
+(B1)2602 1940 w
+6 R f
+(16 19)1 199 1 2561 2008 t
+10 R f
+2776 1812 2776 2028 Dl
+3467 1812 2776 1812 Dl
+3467 2028 3467 1812 Dl
+2776 2028 3467 2028 Dl
+(D1)3060 1940 w
+6 R f
+(20 31)1 659 1 2792 2008 t
+10 R f
+(SS)1462 2384 w
+1624 2256 1624 2472 Dl
+2084 2256 1624 2256 Dl
+2084 2472 2084 2256 Dl
+1624 2472 2084 2472 Dl
+(Opcode)1699 2384 w
+6 R f
+(0 7)1 428 1 1640 2452 t
+10 R f
+2084 2256 2084 2472 Dl
+2544 2256 2084 2256 Dl
+2545 2472 2545 2256 Dl
+2085 2472 2545 2472 Dl
+(Length)2174 2384 w
+6 R f
+(8 15)1 429 1 2100 2452 t
+10 R f
+2545 2256 2545 2472 Dl
+2775 2256 2545 2256 Dl
+2776 2472 2776 2256 Dl
+2546 2472 2776 2472 Dl
+(B1)2602 2384 w
+6 R f
+(16 19)1 199 1 2561 2452 t
+10 R f
+2776 2256 2776 2472 Dl
+3467 2256 2776 2256 Dl
+3467 2472 3467 2256 Dl
+2776 2472 3467 2472 Dl
+(D1)3060 2384 w
+6 R f
+(20 31)1 659 1 2792 2452 t
+10 R f
+3467 2256 3467 2472 Dl
+3697 2256 3467 2256 Dl
+3697 2472 3697 2256 Dl
+3467 2472 3697 2472 Dl
+(B2)3524 2384 w
+6 R f
+(32 35)1 198 1 3483 2452 t
+10 R f
+3697 2256 3697 2472 Dl
+4388 2256 3697 2256 Dl
+4388 2472 4388 2256 Dl
+3697 2472 4388 2472 Dl
+(D2)3982 2384 w
+6 R f
+(36 47)1 659 1 3713 2452 t
+10 R f
+( its box, DFORMAT places the)5 1285(Because the ``Immediate Op'' text in the SI instruction is too long to \256t in)14 3035 2 720 2670 t
+( instruction format in the)4 1062(text below the box and connects it with a line \(as it did twice in the PDP-8)16 3258 2 720 2790 t
+( picture is described as follows:)5 1262(abstract\). This)1 596 2 720 2910 t
+9 CW f
+(.begin dformat)1 756 1 1080 3080 t
+(style bitwid 0.08)2 918 1 1080 3190 t
+(RR)1080 3300 w
+(0-7 Opcode)1 540 1 1512 3410 t
+(8-11 R1)1 378 1 1512 3520 t
+(12-15 R2)1 432 1 1512 3630 t
+(RX)1080 3740 w
+(0-7 Opcode)1 540 1 1512 3850 t
+(8-11 R1)1 378 1 1512 3960 t
+(12-15 X2)1 432 1 1512 4070 t
+(16-19 B2)1 432 1 1512 4180 t
+(20-31 D2)1 432 1 1512 4290 t
+(...)1080 4400 w
+(.end)1080 4510 w
+10 R f
+(The)720 4690 w
+10 CW f
+(style)903 4690 w
+10 R f
+( be viewed as an assignment of the value 0.08 inches to the parameter)13 2835(command can)1 560 2 1231 4690 t
+10 CW f
+(bitwid)4655 4690 w
+10 R f
+(.)5015 4690 w
+( assignments persist between)3 1178( The)1 212( across.)1 306(The widest instruction format of 48 bits is therefore 3.84 inches)10 2624 4 720 4810 t
+( document; in most documents, therefore, the)6 1857(DFORMAT diagrams in a)3 1073 2 720 4930 t
+10 CW f
+(bitwid)3683 4930 w
+10 R f
+(parameter is set only in)4 964 1 4076 4930 t
+(the \256rst picture.)2 630 1 720 5050 t
+(Bits can be numbered with zero at the right; here is the instruction format of the UNIVAC 1103A:)17 3925 1 970 5206 t
+(Instruction Word)1 685 1 1327 5496 t
+2062 5368 2062 5584 Dl
+2494 5368 2062 5368 Dl
+2494 5584 2494 5368 Dl
+2062 5584 2494 5584 Dl
+(OpCode)2112 5496 w
+6 R f
+(35 30)1 400 1 2078 5564 t
+10 R f
+2494 5368 2494 5584 Dl
+3574 5368 2494 5368 Dl
+3574 5584 3574 5368 Dl
+2494 5584 3574 5584 Dl
+(U Address)1 424 1 2822 5496 t
+6 R f
+(29 15)1 1048 1 2510 5564 t
+10 R f
+3574 5368 3574 5584 Dl
+4654 5368 3574 5368 Dl
+4654 5584 4654 5368 Dl
+3574 5584 4654 5584 Dl
+(V Address)1 424 1 3902 5496 t
+6 R f
+(14 0)1 1048 1 3590 5564 t
+10 R f
+(It was produced by this input:)5 1191 1 720 5782 t
+9 CW f
+(.begin dformat)1 756 1 1080 5952 t
+(style bitwid 0.1)2 864 1 1080 6062 t
+(Instr)1080 6172 w
+(35-30 OpCode)1 648 1 1512 6282 t
+(29-15 U Address)2 810 1 1512 6392 t
+(14-0 V Address)2 756 1 1512 6502 t
+(.end)1080 6612 w
+10 R f
+( are simply described; this)4 1077( pictures)1 347( Simple)1 340(These examples illustrate the typical use of DFORMAT.)7 2306 4 970 6828 t
+( 2 describes additional parameters for controlling pic-)7 2220( Section)1 362(level of detail is suf\256cient for most users.)7 1738 3 720 6948 t
+( parameters aren't enough,)3 1069( the built-in)2 469( If)1 117(tures, and Section 3 contains several more sophisticated examples.)8 2665 4 720 7068 t
+(Section 4 describes how you might tinker with the implementation.)9 2688 1 720 7188 t
+cleartomark
+showpage
+saveobj restore
+%%EndPage: 2 4
+%%Page: 3 5
+/saveobj save def
+mark
+5 pagesetup
+10 R f
+(- 3 -)2 166 1 2797 480 t
+10 B f
+( Parameters)1 517(2. Adjusting)1 548 2 720 840 t
+10 R f
+(Many computer systems have memory organized like this:)7 2339 1 970 996 t
+cleartomark
+saveobj restore
+%%BeginGlobal
+%
+% Color and reverse video support for dpost. A call made to setcolor with two
+% arguments implies reverse video printing.
+%
+
+/rgb {setrgbcolor} bind def
+/hsb {sethsbcolor} bind def
+
+/colordict 50 dict dup begin
+	/red			{ 1 0 0 } def
+	/green			{ 0 1 0 } def
+	/blue			{ 0 0 1 } def
+	/cyan			{ 0 1 1 } def
+	/magenta		{ 1 0 1 } def
+	/yellow			{ 1 1 0 } def
+	/white			{ 1 1 1 } def
+	/black			{ 0 0 0 } def
+end def
+
+/setcolor {
+	counttomark 1 eq {
+		dup colordict exch known not {pop /black} if
+		colordict exch get exec setrgbcolor
+	} if
+	counttomark 2 eq {
+		/backcolor exch def
+		/textcolor exch def
+		colordict backcolor known not colordict textcolor known not or {
+			/backcolor colordict /black get def
+			/textcolor colordict /white get def
+		} if
+		/backcolor colordict backcolor get def
+		/textcolor colordict textcolor get def
+		/dY1 0 def
+		/dY2 0 def
+		textcolor exec setrgbcolor
+	} if
+} bind def
+
+/drawrvbox {
+	/x2 exch def
+	/x1 exch def
+
+	currentpoint dup
+	/y1 exch def
+	/y2 exch def pop
+
+	dY1 0 eq dY2 0 eq and {
+		currentfont /FontBBox get aload pop
+		currentfont /FontMatrix get dtransform /dY2 exch def pop
+		currentfont /FontMatrix get dtransform /dY1 exch def pop
+	} if
+
+	/y1 y1 dY1 add def
+	/y2 y2 dY2 add def
+
+	backcolor exec setrgbcolor
+	newpath
+	x1 y1 moveto
+	x2 y1 lineto
+	x2 y2 lineto
+	x1 y2 lineto
+	closepath fill
+	textcolor exec setrgbcolor
+} bind def
+%%EndGlobal
+/saveobj save def
+mark
+gsave
+newpath
+1728 1302 m
+/inpath true def
+ 0.9 setgray
+10 R f
+1728 1158 1728 1302 Dl
+4032 1158 1728 1158 Dl
+4032 1302 4032 1158 Dl
+1728 1302 4032 1302 Dl
+ gsave eofill grestore 0 setgray stroke
+grestore
+/inpath false def
+10 R f
+(Double Word)1 546 1 2607 1250 t
+gsave
+newpath
+1728 1446 m
+/inpath true def
+ 0.9 setgray
+1728 1302 1728 1446 Dl
+2880 1302 1728 1302 Dl
+2880 1446 2880 1302 Dl
+1728 1446 2880 1446 Dl
+ gsave eofill grestore 0 setgray stroke
+grestore
+/inpath false def
+10 R f
+(Word)2191 1394 w
+gsave
+newpath
+2880 1446 m
+/inpath true def
+ 0.9 setgray
+2880 1302 2880 1446 Dl
+4032 1302 2880 1302 Dl
+4032 1446 4032 1302 Dl
+2880 1446 4032 1446 Dl
+ gsave eofill grestore 0 setgray stroke
+grestore
+/inpath false def
+10 R f
+(Word)3343 1394 w
+gsave
+newpath
+1728 1590 m
+/inpath true def
+ 0.9 setgray
+1728 1446 1728 1590 Dl
+2304 1446 1728 1446 Dl
+2304 1590 2304 1446 Dl
+1728 1590 2304 1590 Dl
+ gsave eofill grestore 0 setgray stroke
+grestore
+/inpath false def
+10 R f
+(Half Word)1 429 1 1802 1538 t
+gsave
+newpath
+2304 1590 m
+/inpath true def
+ 0.9 setgray
+2304 1446 2304 1590 Dl
+2880 1446 2304 1446 Dl
+2880 1590 2880 1446 Dl
+2304 1590 2880 1590 Dl
+ gsave eofill grestore 0 setgray stroke
+grestore
+/inpath false def
+10 R f
+(Half Word)1 429 1 2378 1538 t
+gsave
+newpath
+2880 1590 m
+/inpath true def
+ 0.9 setgray
+2880 1446 2880 1590 Dl
+3456 1446 2880 1446 Dl
+3456 1590 3456 1446 Dl
+2880 1590 3456 1590 Dl
+ gsave eofill grestore 0 setgray stroke
+grestore
+/inpath false def
+10 R f
+(Half Word)1 429 1 2954 1538 t
+gsave
+newpath
+3456 1590 m
+/inpath true def
+ 0.9 setgray
+3456 1446 3456 1590 Dl
+4032 1446 3456 1446 Dl
+4032 1590 4032 1446 Dl
+3456 1590 4032 1590 Dl
+ gsave eofill grestore 0 setgray stroke
+grestore
+/inpath false def
+10 R f
+(Half Word)1 429 1 3530 1538 t
+gsave
+newpath
+1728 1734 m
+/inpath true def
+ 0.9 setgray
+1728 1590 1728 1734 Dl
+2016 1590 1728 1590 Dl
+2016 1734 2016 1590 Dl
+1728 1734 2016 1734 Dl
+ gsave eofill grestore 0 setgray stroke
+grestore
+/inpath false def
+10 R f
+(Byte)1778 1682 w
+gsave
+newpath
+2016 1734 m
+/inpath true def
+ 0.9 setgray
+2016 1590 2016 1734 Dl
+2304 1590 2016 1590 Dl
+2304 1734 2304 1590 Dl
+2016 1734 2304 1734 Dl
+ gsave eofill grestore 0 setgray stroke
+grestore
+/inpath false def
+10 R f
+(Byte)2066 1682 w
+gsave
+newpath
+2304 1734 m
+/inpath true def
+ 0.9 setgray
+2304 1590 2304 1734 Dl
+2592 1590 2304 1590 Dl
+2592 1734 2592 1590 Dl
+2304 1734 2592 1734 Dl
+ gsave eofill grestore 0 setgray stroke
+grestore
+/inpath false def
+10 R f
+(Byte)2354 1682 w
+gsave
+newpath
+2592 1734 m
+/inpath true def
+ 0.9 setgray
+2592 1590 2592 1734 Dl
+2880 1590 2592 1590 Dl
+2880 1734 2880 1590 Dl
+2592 1734 2880 1734 Dl
+ gsave eofill grestore 0 setgray stroke
+grestore
+/inpath false def
+10 R f
+(Byte)2642 1682 w
+gsave
+newpath
+2880 1734 m
+/inpath true def
+ 0.9 setgray
+2880 1590 2880 1734 Dl
+3168 1590 2880 1590 Dl
+3168 1734 3168 1590 Dl
+2880 1734 3168 1734 Dl
+ gsave eofill grestore 0 setgray stroke
+grestore
+/inpath false def
+10 R f
+(Byte)2930 1682 w
+gsave
+newpath
+3168 1734 m
+/inpath true def
+ 0.9 setgray
+3168 1590 3168 1734 Dl
+3456 1590 3168 1590 Dl
+3456 1734 3456 1590 Dl
+3168 1734 3456 1734 Dl
+ gsave eofill grestore 0 setgray stroke
+grestore
+/inpath false def
+10 R f
+(Byte)3218 1682 w
+gsave
+newpath
+3456 1734 m
+/inpath true def
+ 0.9 setgray
+3456 1590 3456 1734 Dl
+3744 1590 3456 1590 Dl
+3744 1734 3744 1590 Dl
+3456 1734 3744 1734 Dl
+ gsave eofill grestore 0 setgray stroke
+grestore
+/inpath false def
+10 R f
+(Byte)3506 1682 w
+gsave
+newpath
+3744 1734 m
+/inpath true def
+ 0.9 setgray
+3744 1590 3744 1734 Dl
+4032 1590 3744 1590 Dl
+4032 1734 4032 1590 Dl
+3744 1734 4032 1734 Dl
+ gsave eofill grestore 0 setgray stroke
+grestore
+/inpath false def
+10 R f
+(Byte)3794 1682 w
+(The picture was drawn by this DFORMAT description:)7 2217 1 720 1932 t
+9 CW f
+(.begin dformat)1 756 1 1080 2102 t
+(style fill on)2 702 1 1080 2212 t
+(style bitwid 0.05)2 918 1 1080 2322 t
+(style recspread 0)2 918 1 1080 2432 t
+(style addr off)2 756 1 1080 2542 t
+(style recht 0.2)2 810 1 1080 2652 t
+(noname)1080 2762 w
+(0-63 Double Word)2 864 1 1512 2872 t
+(noname)1080 2982 w
+(0-31 Word)1 486 1 1512 3092 t
+(32-63 Word)1 540 1 1512 3202 t
+(noname)1080 3312 w
+(0-15 Half Word)2 756 1 1512 3422 t
+(16-31 Half Word)2 810 1 1512 3532 t
+(32-47 Half Word)2 810 1 1512 3642 t
+(48-63 Half Word)2 810 1 1512 3752 t
+(...)1134 3862 w
+(.end)1080 3972 w
+10 R f
+(Setting the)1 433 1 720 4152 t
+10 CW f
+(fill)1180 4152 w
+10 R f
+(parameter to)1 503 1 1447 4152 t
+10 CW f
+(on)1977 4152 w
+10 R f
+( The)1 208(produces \256lled boxes.)2 880 2 2124 4152 t
+10 CW f
+(bitwid)3240 4152 w
+10 R f
+(parameter of 0.05 makes the 64-bit)5 1412 1 3628 4152 t
+( The)1 213(record 3.2 inches wide.)3 952 2 720 4272 t
+10 CW f
+(recspread)1917 4272 w
+10 R f
+(parameter is the spread between records; the value of 0 causes)10 2551 1 2489 4272 t
+( Assigning)1 464( no intervening space.)3 900(the records to be stacked with)5 1224 3 720 4392 t
+10 CW f
+(off)3341 4392 w
+10 R f
+(to)3554 4392 w
+10 CW f
+(addr)3665 4392 w
+10 R f
+(turns the addresses off; the)4 1102 1 3938 4392 t
+(default assignment is)2 882 1 720 4512 t
+10 CW f
+(both)1646 4512 w
+10 R f
+(, but it can also be set to either)8 1370 1 1886 4512 t
+10 CW f
+(left)3299 4512 w
+10 R f
+(or)3582 4512 w
+10 CW f
+(right)3708 4512 w
+10 R f
+(. The)1 248 1 4008 4512 t
+10 CW f
+(recht)4299 4512 w
+10 R f
+(parameter)4642 4512 w
+( records have the name)4 931( All)1 180(ensures that each record is depicted by a rectangle 0.2 inches high.)11 2679 3 720 4632 t
+10 CW f
+(noname)4538 4632 w
+10 R f
+(, so)1 142 1 4898 4632 t
+(no text appears to the left of the records.)8 1610 1 720 4752 t
+( picture, for)2 506( This)1 247( problems.)1 441(Diagrams with many long names in short \256elds can lead to esthetic)11 2876 4 970 4908 t
+(instance,)720 5028 w
+(CSR)1351 5318 w
+1591 5190 1591 5406 Dl
+3751 5190 1591 5190 Dl
+3751 5406 3751 5190 Dl
+1591 5406 3751 5406 Dl
+(Reserved)2486 5318 w
+6 R f
+(31 8)1 2128 1 1607 5386 t
+10 R f
+3751 5190 3751 5406 Dl
+3841 5190 3751 5190 Dl
+3841 5406 3841 5190 Dl
+3751 5406 3841 5406 Dl
+3796 5526 3796 5406 Dl
+(Lock)3575 5546 w
+6 R f
+(7)3781 5386 w
+10 R f
+3841 5190 3841 5406 Dl
+3931 5190 3841 5190 Dl
+3931 5406 3931 5190 Dl
+3841 5406 3931 5406 Dl
+3886 5646 3886 5406 Dl
+(Word)3643 5666 w
+6 R f
+(6)3871 5386 w
+10 R f
+3931 5190 3931 5406 Dl
+4021 5190 3931 5190 Dl
+4021 5406 4021 5190 Dl
+3931 5406 4021 5406 Dl
+3976 5766 3976 5406 Dl
+(Single)3704 5786 w
+6 R f
+(5)3961 5386 w
+10 R f
+4021 5190 4021 5406 Dl
+4111 5190 4021 5190 Dl
+4111 5406 4111 5190 Dl
+4021 5406 4111 5406 Dl
+4066 5526 4066 5406 Dl
+(Wake)3818 5546 w
+6 R f
+(4)4051 5386 w
+10 R f
+4111 5190 4111 5406 Dl
+4381 5190 4111 5190 Dl
+4381 5406 4381 5190 Dl
+4111 5406 4381 5406 Dl
+4352 5886 4352 5406 Dl
+(Max Transactions)1 718 1 3618 5906 t
+6 R f
+(3 1)1 238 1 4127 5386 t
+10 R f
+4381 5190 4381 5406 Dl
+4471 5190 4381 5190 Dl
+4471 5406 4471 5190 Dl
+4381 5406 4471 5406 Dl
+4426 5526 4426 5406 Dl
+(Stop)4226 5546 w
+6 R f
+(0)4411 5386 w
+10 R f
+(was described by this input:)4 1116 1 720 6084 t
+cleartomark
+showpage
+saveobj restore
+%%EndPage: 3 5
+%%Page: 4 6
+/saveobj save def
+mark
+6 pagesetup
+10 R f
+(- 4 -)2 166 1 2797 480 t
+9 CW f
+(.begin dformat)1 756 1 1080 890 t
+(style bitwid 0.125)2 972 1 1080 1000 t
+(CSR)1080 1110 w
+(31-8 Reserved)1 864 1 1512 1220 t
+(7 Lock)1 648 1 1512 1330 t
+(6 Word)1 648 1 1512 1440 t
+(5 Single)1 756 1 1512 1550 t
+(4 Wake)1 648 1 1512 1660 t
+( Transactions)1 702(3-1 Max)1 594 2 1512 1770 t
+(0 Stop)1 648 1 1512 1880 t
+(.end)1080 1990 w
+10 R f
+( are placed in channels below the \256elds, with as many names as)12 2585(The \256eld names that do not \256t in the boxes)9 1735 2 720 2170 t
+( lines that connect a \256eld description to its box may pass through other text.)14 3093( The)1 211(possible in each channel.)3 1016 3 720 2290 t
+(If you prefer that lines not pass through text, then you can set the variable)14 2942 1 720 2410 t
+9 CW f
+(style linethrutext 0)2 1080 1 1080 2580 t
+10 R f
+(which results in this picture:)4 1133 1 720 2760 t
+(CSR)1351 3050 w
+1591 2922 1591 3138 Dl
+3751 2922 1591 2922 Dl
+3751 3138 3751 2922 Dl
+1591 3138 3751 3138 Dl
+(Reserved)2486 3050 w
+6 R f
+(31 8)1 2128 1 1607 3118 t
+10 R f
+3751 2922 3751 3138 Dl
+3841 2922 3751 2922 Dl
+3841 3138 3841 2922 Dl
+3751 3138 3841 3138 Dl
+3796 3258 3796 3138 Dl
+(Lock)3575 3278 w
+6 R f
+(7)3781 3118 w
+10 R f
+3841 2922 3841 3138 Dl
+3931 2922 3841 2922 Dl
+3931 3138 3931 2922 Dl
+3841 3138 3931 3138 Dl
+3886 3378 3886 3138 Dl
+(Word)3643 3398 w
+6 R f
+(6)3871 3118 w
+10 R f
+3931 2922 3931 3138 Dl
+4021 2922 3931 2922 Dl
+4021 3138 4021 2922 Dl
+3931 3138 4021 3138 Dl
+3976 3498 3976 3138 Dl
+(Single)3704 3518 w
+6 R f
+(5)3961 3118 w
+10 R f
+4021 2922 4021 3138 Dl
+4111 2922 4021 2922 Dl
+4111 3138 4111 2922 Dl
+4021 3138 4111 3138 Dl
+4066 3618 4066 3138 Dl
+(Wake)3818 3638 w
+6 R f
+(4)4051 3118 w
+10 R f
+4111 2922 4111 3138 Dl
+4381 2922 4111 2922 Dl
+4381 3138 4381 2922 Dl
+4111 3138 4381 3138 Dl
+4352 3739 4352 3138 Dl
+(Max Transactions)1 718 1 3618 3759 t
+6 R f
+(3 1)1 238 1 4127 3118 t
+10 R f
+4381 2922 4381 3138 Dl
+4471 2922 4381 2922 Dl
+4471 3138 4471 2922 Dl
+4381 3138 4471 3138 Dl
+4426 3859 4426 3138 Dl
+(Stop)4226 3879 w
+6 R f
+(0)4411 3118 w
+10 R f
+(This table contains a complete list of available parameters.)8 2343 1 970 4093 t
+9 S f
+(_ __________________________________________________________)1 2617 1 1571 4218 t
+(_ __________________________________________________________)1 2617 1 1571 4238 t
+9 R f
+(I)2121 4338 w
+7 R f
+(NITIAL)2151 4338 w
+9 R f
+(N)1668 4393 w
+7 R f
+(AME)1733 4393 w
+9 R f
+(V)2126 4448 w
+7 R f
+(ALUE)2191 4448 w
+9 R f
+(E)3101 4393 w
+7 R f
+(XPLANATION)3156 4393 w
+9 S f
+(_ __________________________________________________________)1 2617 1 1571 4468 t
+9 R f
+( of 1 bit in inches)5 630( Width)1 419(bitwid 0.125)1 753 3 1571 4578 t
+( of 1 character in inches)5 865( Width)1 464(charwid 0.07)1 708 3 1571 4688 t
+( of boxes, in inches)4 700( Height)1 529(recht 0.3)1 663 3 1571 4798 t
+( between boxes, in inches)4 925( Spread)1 489(recspread 0.15)1 708 3 1571 4908 t
+( of text lines below box, in inches)7 1219( Height)1 439(textht 0.167)1 753 3 1571 5018 t
+( of line from right of box, in inches)8 1272( Distance)1 554(linedisp 0.04)1 708 3 1571 5128 t
+( if lines may pass through text)6 1088( Nonzero)1 662(linethrutext 1)1 595 3 1571 5238 t
+( of addresses above box, in inches)6 1231( Height)1 439(addrht 0.055)1 753 3 1571 5348 t
+( point size for printing bits \(0)6 1058( Delta)1 547(addrdelta 4)1 595 3 1571 5458 t
+9 S f
+(\243)3778 5458 w
+9 I f
+(d)3835 5458 w
+9 S f
+(\243)3887 5458 w
+9 R f
+(9\))3944 5458 w
+( to print addresses \(left, right, both, off\))7 1430( Where)1 477(addr both)1 710 3 1571 5568 t
+( to \256ll boxes, off for un\256lled boxes)7 1259( On)1 402(\256ll off)1 655 3 1571 5678 t
+9 S f
+( \347)1 -2135(_ __________________________________________________________)1 2617 2 1571 5698 t
+(\347)2053 5678 w
+(\347)2053 5588 w
+(\347)2053 5498 w
+(\347)2053 5408 w
+(\347)2053 5318 w
+(\347)2053 5228 w
+(\347)2053 5138 w
+(\347)2053 5048 w
+(\347)2053 4958 w
+(\347)2053 4868 w
+(\347)2053 4778 w
+(\347)2053 4688 w
+(\347)2053 4598 w
+(\347)2053 4508 w
+(\347)2053 4418 w
+(\347)2053 4328 w
+(\347)2450 5698 w
+(\347)2450 5678 w
+(\347)2450 5588 w
+(\347)2450 5498 w
+(\347)2450 5408 w
+(\347)2450 5318 w
+(\347)2450 5228 w
+(\347)2450 5138 w
+(\347)2450 5048 w
+(\347)2450 4958 w
+(\347)2450 4868 w
+(\347)2450 4778 w
+(\347)2450 4688 w
+(\347)2450 4598 w
+(\347)2450 4508 w
+(\347)2450 4418 w
+(\347)2450 4328 w
+10 R f
+(The variables)1 552 1 720 5873 t
+10 CW f
+(addrht)1309 5873 w
+10 R f
+(and)1706 5873 w
+10 CW f
+(addrdelta)1887 5873 w
+10 R f
+( corners of the \256eld boxes;)5 1127(control the addresses printed at the)5 1449 2 2464 5873 t
+10 CW f
+(addrht)720 5993 w
+10 R f
+(is their height in inches above the bottom of the box and)11 2361 1 1115 5993 t
+10 CW f
+(addrdelta)3511 5993 w
+10 R f
+( point)1 240(is the decrease in)3 714 2 4086 5993 t
+( size \(so if it has the value 4 and the point size is 10, the addresses will be printed)19 3303(size from the default font)4 1017 2 720 6113 t
+( variable)1 348( The)1 207(in 6-point\).)1 452 3 720 6233 t
+10 CW f
+(charwid)1754 6233 w
+10 R f
+( a)1 70(is the width of an average character, which is used to decide whether)12 2769 2 2201 6233 t
+( is)1 102(text string will \256t in its box \(0.07 inches is about right for 10-point Times Roman, but any such value)19 4218 2 720 6353 t
+( over\257ow, it is placed beneath)5 1198( text does)2 385( If)1 117(only an approximation; notice the widths of MMMMM and iiiii\).)9 2620 4 720 6473 t
+(the boxes in channels)3 893 1 720 6593 t
+10 CW f
+(textht)1651 6593 w
+10 R f
+(inches high, and vertical lines are drawn down from)8 2180 1 2049 6593 t
+10 CW f
+(linedisp)4267 6593 w
+10 R f
+(inches)4785 6593 w
+( If)1 134(from the right end of the box.)6 1287 2 720 6713 t
+10 CW f
+(linethrutext)2184 6713 w
+10 R f
+( not pass)2 384(is zero, then the connecting lines should)6 1709 2 2947 6713 t
+( If)1 121( text.)1 205(through other)1 545 3 720 6833 t
+10 CW f
+(fill)1621 6833 w
+10 R f
+(is)1891 6833 w
+10 CW f
+(on)1988 6833 w
+10 R f
+( adjust the darkness of \256lled)5 1149( To)1 166(, then records are drawn as \256lled boxes.)7 1617 3 2108 6833 t
+(boxes, one passes an assignment through to PIC:)7 1949 1 720 6953 t
+9 CW f
+(pic fillval = 0.9)3 918 1 1080 7123 t
+10 R f
+(Lower values produce darker backgrounds.)4 1725 1 720 7303 t
+cleartomark
+showpage
+saveobj restore
+%%EndPage: 4 6
+%%Page: 5 7
+/saveobj save def
+mark
+7 pagesetup
+10 R f
+(- 5 -)2 166 1 2797 480 t
+( allows you to)3 603( This)1 241( from one DFORMAT display to another.)6 1746(The values of variables are retained)5 1480 4 970 840 t
+( allow you to use a different style)7 1355( To)1 165(de\256ne a style for a document by setting all values in the \256rst display.)13 2800 3 720 960 t
+( old value of the)4 665( The)1 209( new value is assigned.)4 934(in a single picture, the old value of a variable is stored when a)13 2512 4 720 1080 t
+(variable)720 1200 w
+10 CW f
+(bitwid)1066 1200 w
+10 R f
+(, for instance, may be restored by an assignment of the form)11 2398 1 1426 1200 t
+9 CW f
+(style bitwid reset)2 972 1 1080 1370 t
+10 R f
+( is an)2 219( single integer 4)3 650( The)1 208(The address of a \256eld is typically speci\256ed by a pair of integers, as in 4-7.)15 2993 4 970 1586 t
+( two formats account for most \256elds, but two other kinds of)11 2398( These)1 290( range 4-4.)2 433(abbreviation for the single-bit)3 1199 4 720 1706 t
+(speci\256cations support more exotic \256elds:)4 1638 1 720 1826 t
+9 S f
+(_ _________________________________)1 1492 1 2134 1951 t
+(_ _________________________________)1 1492 1 2134 1971 t
+9 R f
+(F)2134 2071 w
+7 R f
+(ORMAT)2184 2071 w
+9 R f
+(I)2798 2071 w
+7 R f
+(NTERPRETATION)2828 2071 w
+9 S f
+(_ _________________________________)1 1492 1 2134 2091 t
+9 I f
+(i)2134 2201 w
+9 R f
+(Field)2571 2201 w
+9 I f
+(i)2779 2201 w
+9 R f
+(..)2804 2201 w
+9 I f
+(i)2850 2201 w
+9 R f
+(, width 1)2 319 1 2875 2201 t
+9 I f
+(i)2134 2311 w
+9 R f
+(-)2159 2311 w
+9 I f
+(j)2189 2311 w
+9 R f
+(Field)2571 2311 w
+9 I f
+(i)2779 2311 w
+9 R f
+(..)2804 2311 w
+9 I f
+(j)2850 2311 w
+9 R f
+(, width)1 251 1 2875 2311 t
+9 I f
+(j)3149 2311 w
+9 S f
+(-)3189 2311 w
+9 I f
+(i)3254 2311 w
+9 S f
+(+)3301 2311 w
+9 R f
+(1)3366 2311 w
+9 I f
+(l)2134 2421 w
+9 R f
+(-)2159 2421 w
+9 I f
+(r)2189 2421 w
+9 R f
+(-)2224 2421 w
+9 I f
+(w)2254 2421 w
+9 R f
+(Field)2571 2421 w
+9 I f
+(l)2779 2421 w
+9 R f
+(..)2804 2421 w
+9 I f
+(r)2850 2421 w
+9 R f
+(, width)1 251 1 2885 2421 t
+9 I f
+(w)3159 2421 w
+(l)2134 2531 w
+9 R f
+(-)2159 2531 w
+9 I f
+(r)2189 2531 w
+9 R f
+(-)2224 2531 w
+9 I f
+(w)2254 2531 w
+9 R f
+(-)2314 2531 w
+9 I f
+(t)2344 2531 w
+9 R f
+(Field)2571 2531 w
+9 I f
+(l)2779 2531 w
+9 R f
+(..)2804 2531 w
+9 I f
+(r)2850 2531 w
+9 R f
+(, width)1 251 1 2885 2531 t
+9 I f
+(w)3159 2531 w
+9 R f
+(, box type)2 359 1 3219 2531 t
+9 I f
+(t)3601 2531 w
+9 S f
+( \347)1 -1123(_ _________________________________)1 1492 2 2134 2551 t
+(\347)2503 2511 w
+(\347)2503 2421 w
+(\347)2503 2331 w
+(\347)2503 2241 w
+(\347)2503 2151 w
+(\347)2503 2061 w
+10 R f
+(The variables)1 543 1 720 2726 t
+10 I f
+(i)1291 2726 w
+10 R f
+(and)1347 2726 w
+10 I f
+(j)1519 2726 w
+10 R f
+(must be integers,)2 686 1 1575 2726 t
+10 I f
+(w)2289 2726 w
+10 R f
+(may be a real, and)4 744 1 2384 2726 t
+10 I f
+(l)3157 2726 w
+10 R f
+(and)3214 2726 w
+10 I f
+(r)3387 2726 w
+10 R f
+( the third format, the)4 840( Under)1 303(are strings.)1 442 3 3455 2726 t
+(\256eld speci\256ed by)2 683 1 720 2846 t
+9 CW f
+(lo-hi-3)1080 3016 w
+10 R f
+( a)1 73( the fourth format, each \256eld may be given)8 1729( Under)1 302(has left index ``lo'', right index ``hi'' and width 3 bits.)10 2216 4 720 3196 t
+( and ``dash'' are acceptable abbreviations\).)5 1776(type of ``dotted'' or ``dashed'' or ``solid'' \(as in PIC, ``dot'')10 2544 2 720 3316 t
+(These conventions are illustrated in this nonsense \256gure)7 2239 1 720 3436 t
+1584 3598 1584 3814 Dl
+1800 3598 1584 3598 Dl
+1800 3814 1800 3598 Dl
+1584 3814 1800 3814 Dl
+(A)1656 3726 w
+6 R f
+(1)1677 3794 w
+10 R f
+1800 3598 1800 3814 Dl
+2232 3598 1800 3598 Dl
+2232 3814 2232 3598 Dl
+1800 3814 2232 3814 Dl
+(B)1983 3726 w
+6 R f
+(2 3)1 400 1 1816 3794 t
+10 R f
+2232 3598 2232 3814 Dl
+2880 3598 2232 3598 Dl
+2880 3814 2880 3598 Dl
+2232 3814 2880 3814 Dl
+(C)2523 3726 w
+6 R f
+(lo hi)1 616 1 2248 3794 t
+10 R f
+(...)3167 3726 w
+3564 3814 3528 3814 Dl
+3640 3814 3604 3814 Dl
+3717 3814 3681 3814 Dl
+3793 3814 3757 3814 Dl
+3870 3814 3834 3814 Dl
+3946 3814 3910 3814 Dl
+4023 3814 3987 3814 Dl
+4099 3814 4063 3814 Dl
+4176 3814 4140 3814 Dl
+4176 3778 4176 3814 Dl
+4176 3718 4176 3754 Dl
+4176 3657 4176 3693 Dl
+4176 3598 4176 3634 Dl
+4140 3598 4176 3598 Dl
+4063 3598 4099 3598 Dl
+3987 3598 4023 3598 Dl
+3910 3598 3946 3598 Dl
+3834 3598 3870 3598 Dl
+3757 3598 3793 3598 Dl
+3681 3598 3717 3598 Dl
+3604 3598 3640 3598 Dl
+3528 3598 3564 3598 Dl
+3528 3634 3528 3598 Dl
+3528 3693 3528 3657 Dl
+3528 3754 3528 3718 Dl
+3528 3814 3528 3778 Dl
+(D)3816 3726 w
+6 R f
+(88 90)1 616 1 3544 3794 t
+10 R f
+(described by:)1 535 1 720 4012 t
+9 CW f
+(.begin dformat)1 756 1 1080 4182 t
+(style bitwid .3)2 810 1 1080 4292 t
+(noname)1080 4402 w
+(1 A)1 162 1 1512 4512 t
+(2-3 B)1 270 1 1512 4622 t
+(lo-hi-3 C)1 486 1 1512 4732 t
+(--3-invis ...)1 702 1 1512 4842 t
+(88-90-3-dash D)1 756 1 1512 4952 t
+(.end)1080 5062 w
+10 R f
+( have to resort to vile trof-)6 1054(Spaces are not allowed in the indices, so if you want spaces in the output you will)16 3266 2 720 5242 t
+(fery such as using ``)4 813 1 720 5362 t
+10 CW f
+(\\|\\|)1533 5362 w
+10 R f
+( soon see that elaborate uses of this)7 1406( We'll)1 277( adjacent half spaces.)3 847('' to represent two)3 737 4 1773 5362 t
+(notation are somewhat clumsy, but they do get they job done.)10 2459 1 720 5482 t
+( \256nal features that are useful for connecting \256elds in one record to \256elds in)14 3216(DFORMAT has two)2 854 2 970 5638 t
+( picture)1 302( This)1 228(another record: \256eld names and the ability to pass commands through to PIC.)12 3089 3 720 5758 t
+(Record 1)1 363 1 1592 6048 t
+2005 5920 2005 6136 Dl
+3157 5920 2005 5920 Dl
+3157 6136 3157 5920 Dl
+2005 6136 3157 6136 Dl
+(Field 1)1 281 1 2441 6048 t
+6 R f
+(1 8)1 1120 1 2021 6116 t
+10 R f
+(Record 2)1 363 1 1592 6372 t
+2005 6244 2005 6460 Dl
+4309 6244 2005 6244 Dl
+4309 6460 4309 6244 Dl
+2005 6460 4309 6460 Dl
+(Field 2)1 281 1 3017 6372 t
+6 R f
+(1 16)1 2272 1 2021 6440 t
+7 R f
+(.)1995 6139 w
+(.)1995 6175 w
+(.)1995 6211 w
+(.)1995 6247 w
+(.)3147 6139 w
+(.)3183 6142 w
+(.)3219 6145 w
+(.)3255 6149 w
+(.)3291 6152 w
+(.)3327 6155 w
+(.)3363 6159 w
+(.)3399 6162 w
+(.)3435 6166 w
+(.)3471 6169 w
+(.)3507 6172 w
+(.)3543 6176 w
+(.)3579 6179 w
+(.)3615 6182 w
+(.)3651 6186 w
+(.)3687 6189 w
+(.)3723 6193 w
+(.)3759 6196 w
+(.)3795 6199 w
+(.)3831 6203 w
+(.)3867 6206 w
+(.)3903 6209 w
+(.)3939 6213 w
+(.)3975 6216 w
+(.)4011 6220 w
+(.)4047 6223 w
+(.)4083 6226 w
+(.)4119 6230 w
+(.)4155 6233 w
+(.)4191 6236 w
+(.)4227 6240 w
+(.)4263 6243 w
+(.)4299 6247 w
+10 R f
+(was produced by this description.)4 1340 1 720 6658 t
+cleartomark
+showpage
+saveobj restore
+%%EndPage: 5 7
+%%Page: 6 8
+/saveobj save def
+mark
+8 pagesetup
+10 R f
+(- 6 -)2 166 1 2797 480 t
+9 CW f
+(.begin dformat)1 756 1 1080 890 t
+(style bitwid .2)2 810 1 1080 1000 t
+(Record 1)1 432 1 1080 1110 t
+( Field 1)2 432(F1: 1-8)1 432 2 1242 1220 t
+(Record 2)1 432 1 1080 1330 t
+( Field 2)2 432(F2: 1-16)1 486 2 1242 1440 t
+(pic line dotted from F1.sw to F2.nw)6 1890 1 1080 1550 t
+(pic line dotted from F1.se to F2.ne)6 1890 1 1080 1660 t
+(.end)1080 1770 w
+10 R f
+( such a line ends in a colon, it is interpreted as a)12 2007(Field lines have leading white space; if the \256rst string in)10 2313 2 720 1950 t
+( the \256rst \256eld)3 537( If)1 118( with capital letters\).)3 827(name of the corresponding PIC box \(recall that PIC names must begin)11 2838 4 720 2070 t
+( We'll)1 291( line is the word ``pic'', then the rest of the line is passed through to be processed by PIC.)19 3847(on a)1 182 3 720 2190 t
+(shortly see an application of these mechanisms.)6 1900 1 720 2310 t
+10 B f
+( Examples)1 442(3. Additional)1 582 2 720 2550 t
+10 R f
+( be used to prepare overhead transparencies and other material that requires oversize)12 3415(DFORMAT can)1 655 2 970 2706 t
+( large version of two System/360 instruction formats)7 2107(text. This)1 403 2 720 2826 t
+20 R f
+(RR)1054 3244 w
+1422 2988 1422 3420 Dl
+2286 2988 1422 2988 Dl
+2286 3420 2286 2988 Dl
+1422 3420 2286 3420 Dl
+(Opcode)1544 3244 w
+12 R f
+(0)1455 3388 w
+20 R f
+2286 2988 2286 3420 Dl
+2718 2988 2286 2988 Dl
+2718 3420 2718 2988 Dl
+2286 3420 2718 3420 Dl
+(R1)2385 3244 w
+12 R f
+(8)2319 3388 w
+20 R f
+2718 2988 2718 3420 Dl
+3150 2988 2718 2988 Dl
+3150 3420 3150 2988 Dl
+2718 3420 3150 3420 Dl
+(R2)2817 3244 w
+12 R f
+(12)2751 3388 w
+20 R f
+(RX)1044 3892 w
+1422 3636 1422 4068 Dl
+2286 3636 1422 3636 Dl
+2286 4068 2286 3636 Dl
+1422 4068 2286 4068 Dl
+(Opcode)1544 3892 w
+12 R f
+(0)1455 4036 w
+20 R f
+2286 3636 2286 4068 Dl
+2718 3636 2286 3636 Dl
+2718 4068 2718 3636 Dl
+2286 4068 2718 4068 Dl
+(R1)2385 3892 w
+12 R f
+(8)2319 4036 w
+20 R f
+2718 3636 2718 4068 Dl
+3150 3636 2718 3636 Dl
+3150 4068 3150 3636 Dl
+2718 4068 3150 4068 Dl
+(X2)2812 3892 w
+12 R f
+(12)2751 4036 w
+20 R f
+3150 3636 3150 4068 Dl
+3582 3636 3150 3636 Dl
+3582 4068 3582 3636 Dl
+3150 4068 3582 4068 Dl
+(B2)3249 3892 w
+12 R f
+(16)3183 4036 w
+20 R f
+3582 3636 3582 4068 Dl
+4878 3636 3582 3636 Dl
+4878 4068 4878 3636 Dl
+3582 4068 4878 4068 Dl
+(D2)4108 3892 w
+12 R f
+(20)3615 4036 w
+10 R f
+(was described in this form:)4 1082 1 720 4266 t
+9 CW f
+(.ps +10)1 378 1 1080 4436 t
+(.begin dformat)1 756 1 1080 4546 t
+(style bitwid 0.15)2 918 1 1080 4656 t
+(style recht 0.6)2 810 1 1080 4766 t
+(style recspread 0.3)2 1026 1 1080 4876 t
+(style addrdelta 8)2 918 1 1080 4986 t
+(style addrht 0.1)2 864 1 1080 5096 t
+(style addr left)2 810 1 1080 5206 t
+(RR)1080 5316 w
+(0-7 Opcode)1 540 1 1512 5426 t
+(8-11 R1)1 378 1 1512 5536 t
+(12-15 R2)1 432 1 1512 5646 t
+(RX)1080 5756 w
+(0-7 Opcode)1 540 1 1512 5866 t
+(8-11 R1)1 378 1 1512 5976 t
+(12-15 X2)1 432 1 1512 6086 t
+(16-19 B2)1 432 1 1512 6196 t
+(20-31 D2)1 432 1 1512 6306 t
+(.end)1080 6416 w
+(.ps -10)1 378 1 1080 6526 t
+10 R f
+(The TROFF)1 506 1 720 6706 t
+10 CW f
+(.ps +10)1 434 1 1265 6706 t
+10 R f
+( series of)2 390( The)1 220(command increments the point size from 10 points to 20 points.)10 2692 3 1738 6706 t
+10 CW f
+(style)720 6826 w
+10 R f
+( started by doubling)3 806( \(I)1 119( the parameters to be more appropriate for this larger format.)10 2454(commands sets)1 612 4 1049 6826 t
+( The)1 207( them to look a little better.\))6 1131(any parameter that ``looked funny'' in the regular form, and then twiddled)11 2982 3 720 6946 t
+(assignment of)1 566 1 720 7066 t
+10 CW f
+(left)1318 7066 w
+10 R f
+(to the parameter)2 662 1 1590 7066 t
+10 CW f
+(addr)2284 7066 w
+10 R f
+(causes only the left bit addresses to be printed \(printing both)10 2484 1 2556 7066 t
+(looks a little crowded\).)3 921 1 720 7186 t
+cleartomark
+showpage
+saveobj restore
+%%EndPage: 6 8
+%%Page: 7 9
+/saveobj save def
+mark
+9 pagesetup
+10 R f
+(- 7 -)2 166 1 2797 480 t
+( represents the most)3 832( It)1 123( a data communications network.)4 1371(The next \256gure shows the packets used in)7 1744 4 970 840 t
+(complex kind of \256gure that can \(well, more accurately, should\) be drawn with DFORMAT.)13 3655 1 720 960 t
+806 1122 806 1338 Dl
+1727 1122 806 1122 Dl
+1727 1338 1727 1122 Dl
+806 1338 1727 1338 Dl
+(Frame)1139 1250 w
+1727 1122 1727 1338 Dl
+2648 1122 1727 1122 Dl
+2649 1338 2649 1122 Dl
+1728 1338 2649 1338 Dl
+(Frame)2061 1250 w
+2649 1122 2649 1338 Dl
+3570 1122 2649 1122 Dl
+3570 1338 3570 1122 Dl
+2649 1338 3570 1338 Dl
+(Frame)2983 1250 w
+3570 1122 3570 1338 Dl
+4491 1122 3570 1122 Dl
+4492 1338 4492 1122 Dl
+3571 1338 4492 1338 Dl
+(Frame)3904 1250 w
+4528 1338 4492 1338 Dl
+4598 1338 4562 1338 Dl
+4670 1338 4634 1338 Dl
+4740 1338 4704 1338 Dl
+4811 1338 4775 1338 Dl
+4882 1338 4846 1338 Dl
+4953 1338 4917 1338 Dl
+4953 1302 4953 1338 Dl
+4953 1242 4953 1278 Dl
+4953 1181 4953 1217 Dl
+4953 1122 4953 1158 Dl
+4917 1122 4953 1122 Dl
+4846 1122 4882 1122 Dl
+4775 1122 4811 1122 Dl
+4704 1122 4740 1122 Dl
+4634 1122 4670 1122 Dl
+4562 1122 4598 1122 Dl
+4492 1122 4528 1122 Dl
+4492 1158 4492 1122 Dl
+4492 1217 4492 1181 Dl
+4492 1278 4492 1242 Dl
+4492 1338 4492 1302 Dl
+(...)4685 1250 w
+806 1554 806 1770 Dl
+1266 1554 806 1554 Dl
+1266 1770 1266 1554 Dl
+806 1770 1266 1770 Dl
+(Flags)928 1682 w
+6 R f
+(8)822 1750 w
+10 R f
+1266 1554 1266 1770 Dl
+1726 1554 1266 1554 Dl
+1727 1770 1727 1554 Dl
+1267 1770 1727 1770 Dl
+(Status)1375 1682 w
+6 R f
+(8)1282 1750 w
+10 R f
+1727 1554 1727 1770 Dl
+2187 1554 1727 1554 Dl
+2188 1770 2188 1554 Dl
+1728 1770 2188 1770 Dl
+(Chunk)1798 1682 w
+7 R f
+(1)2076 1702 w
+10 R f
+2188 1554 2188 1770 Dl
+2648 1554 2188 1554 Dl
+2649 1770 2649 1554 Dl
+2189 1770 2649 1770 Dl
+(Chunk)2258 1682 w
+7 R f
+(2)2536 1702 w
+10 R f
+2685 1770 2649 1770 Dl
+2755 1770 2719 1770 Dl
+2827 1770 2791 1770 Dl
+2897 1770 2861 1770 Dl
+2968 1770 2932 1770 Dl
+3039 1770 3003 1770 Dl
+3110 1770 3074 1770 Dl
+3110 1734 3110 1770 Dl
+3110 1674 3110 1710 Dl
+3110 1613 3110 1649 Dl
+3110 1554 3110 1590 Dl
+3074 1554 3110 1554 Dl
+3003 1554 3039 1554 Dl
+2932 1554 2968 1554 Dl
+2861 1554 2897 1554 Dl
+2791 1554 2827 1554 Dl
+2719 1554 2755 1554 Dl
+2649 1554 2685 1554 Dl
+2649 1590 2649 1554 Dl
+2649 1649 2649 1613 Dl
+2649 1710 2649 1674 Dl
+2649 1770 2649 1734 Dl
+(...)2842 1682 w
+3110 1554 3110 1770 Dl
+3570 1554 3110 1554 Dl
+3570 1770 3570 1554 Dl
+3110 1770 3570 1770 Dl
+(Chunk)3172 1682 w
+7 I f
+(m)3450 1702 w
+10 R f
+3570 1554 3570 1770 Dl
+4491 1554 3570 1554 Dl
+4492 1770 4492 1554 Dl
+3571 1770 4492 1770 Dl
+(CRC)3931 1682 w
+6 R f
+(16)3586 1750 w
+10 R f
+4492 1554 4492 1770 Dl
+4952 1554 4492 1554 Dl
+4953 1770 4953 1554 Dl
+4493 1770 4953 1770 Dl
+(Flags)4614 1682 w
+6 R f
+(8)4508 1750 w
+10 R f
+806 1986 806 2202 Dl
+1266 1986 806 1986 Dl
+1266 2202 1266 1986 Dl
+806 2202 1266 2202 Dl
+(Data)915 2114 w
+7 R f
+(1)1114 2134 w
+6 R f
+(8)822 2182 w
+10 R f
+1266 1986 1266 2202 Dl
+1726 1986 1266 1986 Dl
+1727 2202 1727 1986 Dl
+1267 2202 1727 2202 Dl
+(Data)1376 2114 w
+7 R f
+(2)1575 2134 w
+6 R f
+(8)1282 2182 w
+10 R f
+1727 1986 1727 2202 Dl
+2187 1986 1727 1986 Dl
+2188 2202 2188 1986 Dl
+1728 2202 2188 2202 Dl
+(Data)1837 2114 w
+7 R f
+(3)2036 2134 w
+6 R f
+(8)1743 2182 w
+10 R f
+2188 1986 2188 2202 Dl
+2648 1986 2188 1986 Dl
+2649 2202 2649 1986 Dl
+2189 2202 2649 2202 Dl
+(Data)2297 2114 w
+7 R f
+(4)2496 2134 w
+6 R f
+(8)2204 2182 w
+10 R f
+2685 2202 2649 2202 Dl
+2755 2202 2719 2202 Dl
+2827 2202 2791 2202 Dl
+2897 2202 2861 2202 Dl
+2968 2202 2932 2202 Dl
+3039 2202 3003 2202 Dl
+3110 2202 3074 2202 Dl
+3110 2166 3110 2202 Dl
+3110 2106 3110 2142 Dl
+3110 2045 3110 2081 Dl
+3110 1986 3110 2022 Dl
+3074 1986 3110 1986 Dl
+3003 1986 3039 1986 Dl
+2932 1986 2968 1986 Dl
+2861 1986 2897 1986 Dl
+2791 1986 2827 1986 Dl
+2719 1986 2755 1986 Dl
+2649 1986 2685 1986 Dl
+2649 2022 2649 1986 Dl
+2649 2081 2649 2045 Dl
+2649 2142 2649 2106 Dl
+2649 2202 2649 2166 Dl
+(...)2842 2114 w
+3110 1986 3110 2202 Dl
+3570 1986 3110 1986 Dl
+3570 2202 3570 1986 Dl
+3110 2202 3570 2202 Dl
+(Data)3169 2114 w
+7 I f
+(n)3368 2134 w
+7 S f
+(-)3419 2134 w
+7 R f
+(1)3469 2134 w
+6 R f
+(8)3126 2182 w
+10 R f
+3570 1986 3570 2202 Dl
+4030 1986 3570 1986 Dl
+4031 2202 4031 1986 Dl
+3571 2202 4031 2202 Dl
+(Data)3680 2114 w
+7 I f
+(n)3879 2134 w
+6 R f
+(8)3586 2182 w
+10 R f
+4031 1986 4031 2202 Dl
+4376 1986 4031 1986 Dl
+4377 2202 4377 1986 Dl
+4032 2202 4377 2202 Dl
+(Length)4063 2114 w
+6 R f
+(6)4047 2182 w
+10 R f
+4377 1986 4377 2202 Dl
+4953 1986 4377 1986 Dl
+4953 2202 4953 1986 Dl
+4377 2202 4953 2202 Dl
+(Channel #)1 408 1 4461 2114 t
+6 R f
+(10)4393 2182 w
+7 R f
+(.)2639 1341 w
+(.)2603 1345 w
+(.)2568 1349 w
+(.)2532 1353 w
+(.)2497 1357 w
+(.)2462 1361 w
+(.)2426 1366 w
+(.)2390 1369 w
+(.)2355 1374 w
+(.)2320 1378 w
+(.)2284 1382 w
+(.)2248 1386 w
+(.)2213 1390 w
+(.)2178 1395 w
+(.)2143 1399 w
+(.)2107 1403 w
+(.)2071 1407 w
+(.)2036 1411 w
+(.)2001 1415 w
+(.)1966 1420 w
+(.)1930 1423 w
+(.)1894 1428 w
+(.)1859 1432 w
+(.)1824 1436 w
+(.)1788 1440 w
+(.)1752 1444 w
+(.)1717 1449 w
+(.)1682 1453 w
+(.)1647 1457 w
+(.)1611 1461 w
+(.)1575 1465 w
+(.)1540 1469 w
+(.)1505 1474 w
+(.)1469 1477 w
+(.)1433 1482 w
+(.)1398 1486 w
+(.)1363 1490 w
+(.)1327 1494 w
+(.)1292 1498 w
+(.)1256 1503 w
+(.)1221 1507 w
+(.)1186 1511 w
+(.)1150 1515 w
+(.)1114 1519 w
+(.)1079 1523 w
+(.)1044 1528 w
+(.)1008 1531 w
+(.)973 1536 w
+(.)937 1540 w
+(.)902 1544 w
+(.)866 1548 w
+(.)831 1552 w
+(.)796 1557 w
+(.)3560 1341 w
+(.)3596 1346 w
+(.)3631 1351 w
+(.)3667 1357 w
+(.)3702 1363 w
+(.)3737 1368 w
+(.)3773 1374 w
+(.)3809 1379 w
+(.)3844 1385 w
+(.)3879 1390 w
+(.)3915 1396 w
+(.)3951 1402 w
+(.)3986 1407 w
+(.)4021 1413 w
+(.)4056 1418 w
+(.)4092 1423 w
+(.)4128 1429 w
+(.)4163 1435 w
+(.)4198 1440 w
+(.)4234 1446 w
+(.)4270 1451 w
+(.)4305 1457 w
+(.)4340 1462 w
+(.)4375 1468 w
+(.)4411 1474 w
+(.)4447 1479 w
+(.)4482 1485 w
+(.)4517 1490 w
+(.)4552 1495 w
+(.)4588 1501 w
+(.)4624 1507 w
+(.)4659 1512 w
+(.)4694 1518 w
+(.)4730 1523 w
+(.)4766 1529 w
+(.)4801 1534 w
+(.)4836 1540 w
+(.)4872 1546 w
+(.)4907 1551 w
+(.)4943 1557 w
+(.)2178 1773 w
+(.)2143 1778 w
+(.)2107 1783 w
+(.)2071 1789 w
+(.)2036 1795 w
+(.)2001 1800 w
+(.)1966 1806 w
+(.)1930 1811 w
+(.)1894 1817 w
+(.)1859 1822 w
+(.)1824 1828 w
+(.)1788 1834 w
+(.)1752 1839 w
+(.)1717 1845 w
+(.)1682 1850 w
+(.)1647 1855 w
+(.)1611 1861 w
+(.)1575 1867 w
+(.)1540 1872 w
+(.)1505 1878 w
+(.)1469 1883 w
+(.)1433 1889 w
+(.)1398 1894 w
+(.)1363 1900 w
+(.)1327 1906 w
+(.)1292 1911 w
+(.)1256 1917 w
+(.)1221 1922 w
+(.)1186 1927 w
+(.)1150 1933 w
+(.)1114 1939 w
+(.)1079 1944 w
+(.)1044 1950 w
+(.)1008 1955 w
+(.)973 1961 w
+(.)937 1966 w
+(.)902 1972 w
+(.)866 1978 w
+(.)831 1983 w
+(.)796 1989 w
+(.)2639 1773 w
+(.)2675 1776 w
+(.)2711 1779 w
+(.)2747 1783 w
+(.)2783 1786 w
+(.)2819 1789 w
+(.)2855 1793 w
+(.)2891 1796 w
+(.)2927 1800 w
+(.)2963 1803 w
+(.)2999 1806 w
+(.)3035 1810 w
+(.)3071 1813 w
+(.)3107 1816 w
+(.)3143 1820 w
+(.)3179 1823 w
+(.)3215 1827 w
+(.)3251 1830 w
+(.)3287 1833 w
+(.)3323 1837 w
+(.)3359 1840 w
+(.)3395 1843 w
+(.)3431 1847 w
+(.)3467 1850 w
+(.)3503 1854 w
+(.)3539 1857 w
+(.)3575 1860 w
+(.)3611 1864 w
+(.)3647 1867 w
+(.)3683 1870 w
+(.)3719 1874 w
+(.)3755 1877 w
+(.)3791 1881 w
+(.)3827 1884 w
+(.)3863 1887 w
+(.)3899 1891 w
+(.)3935 1894 w
+(.)3971 1897 w
+(.)4007 1901 w
+(.)4043 1904 w
+(.)4079 1908 w
+(.)4115 1911 w
+(.)4151 1914 w
+(.)4187 1918 w
+(.)4223 1921 w
+(.)4259 1924 w
+(.)4295 1928 w
+(.)4331 1931 w
+(.)4367 1935 w
+(.)4403 1938 w
+(.)4439 1941 w
+(.)4475 1945 w
+(.)4511 1948 w
+(.)4547 1951 w
+(.)4583 1955 w
+(.)4619 1958 w
+(.)4655 1962 w
+(.)4691 1965 w
+(.)4727 1968 w
+(.)4763 1972 w
+(.)4799 1975 w
+(.)4835 1978 w
+(.)4871 1982 w
+(.)4907 1985 w
+(.)4943 1989 w
+10 R f
+(The description uses complex \256eld descriptions, named \256elds, PIC pass-throughs, and embedded EQN.)12 4129 1 720 2400 t
+9 CW f
+(.begin dformat)1 756 1 1080 2570 t
+(style bitwid 0.08)2 918 1 1080 2680 t
+(style charwid 0)2 810 1 1080 2790 t
+(style recspread 0.3)2 1026 1 1080 2900 t
+(noname)1080 3010 w
+(--16 Frame)1 540 1 1512 3120 t
+(--16 Frame)1 540 1 1512 3230 t
+( Frame)1 324(A1: --16)1 540 2 1188 3340 t
+(--16 Frame)1 540 1 1512 3450 t
+(--8-dash ...)1 648 1 1512 3560 t
+(noname)1080 3670 w
+( Flags)1 324(A2: 8--8)1 540 2 1188 3780 t
+(8--8 Status)1 594 1 1512 3890 t
+(--8 @roman Chunk sub 1@)4 1242 1 1512 4000 t
+( @roman Chunk sub 2@)4 1080(B1: --8)1 486 2 1188 4110 t
+(--8-dash ...)1 648 1 1512 4220 t
+(--8 @roman Chunk sub m@)4 1242 1 1512 4330 t
+(16--16 CRC)1 540 1 1512 4440 t
+( Flags)1 324(A3: 8--8)1 540 2 1188 4550 t
+(noname)1080 4660 w
+( @roman Data sub 1@)4 1026(B2: 8--8)1 540 2 1188 4770 t
+(8--8 @roman Data sub 2@)4 1242 1 1512 4880 t
+(8--8 @roman Data sub 3@)4 1242 1 1512 4990 t
+(8--8 @roman Data sub 4@)4 1242 1 1512 5100 t
+(--8-dash ...)1 648 1 1512 5210 t
+(8--8 @roman Data sub {n-1}@)4 1458 1 1512 5320 t
+(8--8 @roman Data sub n@)4 1242 1 1512 5430 t
+(6--6 Length)1 594 1 1512 5540 t
+( Channel #)2 540(B3: 10--10)1 648 2 1188 5650 t
+(pic line dotted from A1.sw to A2.nw)6 1890 1 1080 5760 t
+(pic line dotted from A1.se to A3.ne)6 1890 1 1080 5870 t
+(pic line dotted from B1.sw to B2.nw)6 1890 1 1080 5980 t
+(pic line dotted from B1.se to B3.ne)6 1890 1 1080 6090 t
+(.end)1080 6200 w
+10 B f
+( Implementation)1 708(4. DFORMAT)1 641 2 720 6500 t
+10 R f
+( will rarely need material beyond that contained in Section 1,)10 2508(I hope that many users of DFORMAT)6 1562 2 970 6656 t
+( are no addi-)3 516( you want to go even further, there)7 1422( If)1 122(and that Sections 2 and 3 cover most of the exceptions.)10 2260 4 720 6776 t
+( section begins by describing a)5 1234( This)1 229( must modify the program.)4 1073(tional bells and whistles in DFORMAT; you)6 1784 4 720 6896 t
+(miniature version of the program and then presents the entire source code.)11 2960 1 720 7016 t
+( not support parameters and)4 1157( does)1 219( It)1 122(This trivial version of DFORMAT draws simple data formats.)8 2572 4 970 7172 t
+(style assignments, nor does it place long strings below their boxes.)10 2665 1 720 7292 t
+cleartomark
+showpage
+saveobj restore
+%%EndPage: 7 9
+%%Page: 8 10
+/saveobj save def
+mark
+10 pagesetup
+10 R f
+(- 8 -)2 166 1 2797 480 t
+9 CW f
+(awk ')1 270 1 720 890 t
+( if \($0 !\304 /\303\\.begin[ \\t]/ || $2 != "dformat"\) print)10 2808( {)1 216(inlang == 0)2 594 3 720 1000 t
+(else { inlang = 1; print ".PS"; boxacnt = 0 })10 2430 1 1584 1110 t
+(next)1584 1220 w
+(})1476 1330 w
+( inlang = 0; print ".PE"; next })7 1728(/\303\\.end/ {)1 810 2 720 1440 t
+( printf "BoxA: box invis ht 0.3 wid 0")8 2052( {)1 324(/\303[\303 \\t]/)1 486 3 720 1550 t
+(if \(boxacnt++\) printf " with .n at BoxA.s - \(0,0.15\)")9 2862 1 1584 1660 t
+(printf "\\n")1 594 1 1584 1770 t
+( rjust at BoxA.w\\n", $0)4 1242( \\")1 216(printf " \\"%s:)2 756 3 1584 1880 t
+(printf " BoxB: box invis ht 0.3 wid 0 at BoxA\\n")10 2592 1 1584 1990 t
+(next)1584 2100 w
+(})1476 2210 w
+( range = $1; $1 = "")6 1080(/./ {)1 810 2 720 2320 t
+(gsub\(/\303[ \\t]+/, ""\); gsub\(/[ \\t]+$/, ""\); text = $0)8 2754 1 1584 2430 t
+(n = split\(range, x, "-"\))4 1296 1 1584 2540 t
+(rlo = x[1])2 540 1 1584 2650 t
+(rhi = \(n >= 2\) ? x[2] : rlo)8 1458 1 1584 2760 t
+(rwid = rhi - rlo + 1)6 1080 1 1584 2870 t
+( box %s ht .3 wid %g with .w at BoxB.e\\n",)10 2268( BoxB:)1 378(printf ")1 432 3 1584 2980 t
+(btype, rwid*.2)1 756 1 2016 3090 t
+( at BoxB.c\\n", text)3 1026( \\"%s\\")1 540(printf ")1 432 3 1584 3200 t
+(printf "\\t\\" \\\\s-4%s\\\\s+4\\" ljust at BoxB.sw + \(0,.06\)\\n", rlo)8 3348 1 1584 3310 t
+(printf "\\t\\"\\\\s-4%s\\\\s+4 \\" rjust at BoxB.se + \(0,.06\)\\n", rhi)8 3348 1 1584 3420 t
+(})1476 3530 w
+(' $*)1 216 1 720 3640 t
+10 R f
+(This sample input)2 717 1 720 3820 t
+9 CW f
+(.begin dformat)1 756 1 1080 3990 t
+(Record 1)1 432 1 1080 4100 t
+(0-7 Field 1a)2 648 1 1512 4210 t
+(8-15 Field 1b)2 702 1 1512 4320 t
+(Record 2)1 432 1 1080 4430 t
+(0-5 Field 2a)2 648 1 1512 4540 t
+(6 2b)1 216 1 1512 4650 t
+(.end)1080 4760 w
+10 R f
+(produces this picture)2 832 1 720 4940 t
+(Record 1:)1 391 1 1287 5230 t
+1728 5102 1728 5318 Dl
+2880 5102 1728 5102 Dl
+2880 5318 2880 5102 Dl
+1728 5318 2880 5318 Dl
+(Field 1a)1 325 1 2142 5230 t
+6 R f
+(0 7)1 1102 1 1753 5294 t
+10 R f
+2880 5102 2880 5318 Dl
+4032 5102 2880 5102 Dl
+4032 5318 4032 5102 Dl
+2880 5318 4032 5318 Dl
+(Field 1b)1 331 1 3291 5230 t
+6 R f
+(8 15)1 1102 1 2905 5294 t
+10 R f
+(Record 2:)1 391 1 1287 5554 t
+1728 5426 1728 5642 Dl
+2592 5426 1728 5426 Dl
+2592 5642 2592 5426 Dl
+1728 5642 2592 5642 Dl
+(Field 2a)1 325 1 1998 5554 t
+6 R f
+(0 5)1 814 1 1753 5618 t
+10 R f
+2592 5426 2592 5642 Dl
+2736 5426 2592 5426 Dl
+2736 5642 2736 5426 Dl
+2592 5642 2736 5642 Dl
+(2b)2614 5554 w
+6 R f
+(6 6)1 94 1 2617 5618 t
+10 R f
+(by making this PIC \256le:)4 957 1 720 5840 t
+cleartomark
+showpage
+saveobj restore
+%%EndPage: 8 10
+%%Page: 9 11
+/saveobj save def
+mark
+11 pagesetup
+10 R f
+(- 9 -)2 166 1 2797 480 t
+9 CW f
+(.PS)1080 890 w
+(BoxA: box invis ht 0.3 wid 0)6 1512 1 1080 1000 t
+( rjust at BoxA.w)3 864( ")1 162("Record 1:)1 540 3 1134 1110 t
+(BoxB: box invis ht 0.3 wid 0 at BoxA)8 1944 1 1134 1220 t
+( .3 wid 1.6 with .w at BoxB.e)7 1566( ht)1 216(BoxB: box)1 486 3 1188 1330 t
+("Field 1a" at BoxB.c)3 1080 1 1296 1440 t
+(" \\s-40\\s+4" ljust at BoxB.sw + \(0,.06\))6 2106 1 1512 1550 t
+("\\s-47\\s+4 " rjust at BoxB.se + \(0,.06\))6 2106 1 1512 1660 t
+( .3 wid 1.6 with .w at BoxB.e)7 1566( ht)1 216(BoxB: box)1 486 3 1188 1770 t
+("Field 1b" at BoxB.c)3 1080 1 1296 1880 t
+(" \\s-48\\s+4" ljust at BoxB.sw + \(0,.06\))6 2106 1 1512 1990 t
+("\\s-415\\s+4 " rjust at BoxB.se + \(0,.06\))6 2160 1 1512 2100 t
+(BoxA: box invis ht 0.3 wid 0 with .n at BoxA.s - \(0,0.15\))12 3078 1 1080 2210 t
+( rjust at BoxA.w)3 864( ")1 162("Record 2:)1 540 3 1134 2320 t
+(BoxB: box invis ht 0.3 wid 0 at BoxA)8 1944 1 1134 2430 t
+( .3 wid 1.2 with .w at BoxB.e)7 1566( ht)1 216(BoxB: box)1 486 3 1188 2540 t
+("Field 2a" at BoxB.c)3 1080 1 1296 2650 t
+(" \\s-40\\s+4" ljust at BoxB.sw + \(0,.06\))6 2106 1 1512 2760 t
+("\\s-45\\s+4 " rjust at BoxB.se + \(0,.06\))6 2106 1 1512 2870 t
+( .3 wid 0.2 with .w at BoxB.e)7 1566( ht)1 216(BoxB: box)1 486 3 1188 2980 t
+("2b" at BoxB.c)2 756 1 1296 3090 t
+(" \\s-46\\s+4" ljust at BoxB.sw + \(0,.06\))6 2106 1 1512 3200 t
+("\\s-46\\s+4 " rjust at BoxB.se + \(0,.06\))6 2106 1 1512 3310 t
+(.PE)1080 3420 w
+10 R f
+(The complete program produces similar PIC output; here is the source code.)11 3045 1 970 3636 t
+cleartomark
+showpage
+saveobj restore
+%%EndPage: 9 11
+%%Page: 10 12
+/saveobj save def
+mark
+12 pagesetup
+10 R f
+(- 10 -)2 216 1 2772 480 t
+8 CW f
+(awk ')1 240 1 720 870 t
+(function error\(s\) { print "dformat error: " s " near input line " NR | "cat 1>&2" })17 3984 1 720 960 t
+( 0.15 ")2 336( recspread)1 624( 0.055)1 288( addrht)1 672( 0.3)1 192( "recht)1 432(BEGIN { s =)3 528 7 720 1140 t
+( 4 ")2 192( addrdelta)1 624( 0.167)1 288( textht)1 528(s = s "charwid 0.07)4 912 5 1104 1230 t
+( both ")2 336( addr)1 336( 0.04)1 240( linedisp)1 624(s = s "bitwid 0.125)4 912 5 1104 1320 t
+( 1")1 144( linethrutext)1 1008(s = s "fill off)4 720 3 1104 1410 t
+(n = split\(s, x\))3 720 1 1104 1500 t
+(for \(i = 1; i <= n-1; i += 2\) oparm[x[i]] = parm[x[i]] = x[i+1])14 3024 1 1104 1590 t
+(})720 1680 w
+( if \($0 !\304 /\303\\.begin[ \\t]/ || $2 != "dformat"\) print)10 2496( {)1 192(inlang == 0)2 528 3 720 1860 t
+(else {)1 288 1 1488 1950 t
+(inlang = 1; print ".PS"; boxacnt = 0)7 1728 1 1872 2040 t
+(if \(firstpic != 1\) { firstpic = 1; print "fillval = 0.9" })12 2784 1 1872 2130 t
+(})1488 2220 w
+(next)1488 2310 w
+(})1392 2400 w
+( inlang = 0; print ".PE"; next })7 1536(/\303\\.end/ {)1 720 2 720 2490 t
+($1 == "style" { if \(!\($2 in parm\)\) error\("unrecognized name: " $2\))11 3168 1 720 2670 t
+(else if \($3 == "reset"\) {)5 1200 1 1488 2760 t
+(t = oparm[$2]; oparm[$2] = parm[$2]; parm[$2] = t)8 2352 1 1872 2850 t
+(} else {)2 384 1 1488 2940 t
+(oparm[$2] = parm[$2]; parm[$2] = $3)5 1680 1 1872 3030 t
+(})1488 3120 w
+(next)1488 3210 w
+(})1392 3300 w
+( $1 = ""; print $0; next })7 1248( {)1 192($1 == "pic")2 528 3 720 3480 t
+( printf "BoxA: box invis ht %g wid 0", parm["recht"])9 2496( {)1 288(/\303[\303 \\t]/)1 432 3 720 3660 t
+(if \(boxacnt++\) printf " with .n at BoxA.s - \(0,%g\)",)9 2496 1 1488 3750 t
+(parm["recspread"] + maxdy*parm["textht"])2 1920 1 2256 3840 t
+(printf "\\n")1 528 1 1488 3930 t
+(maxdy = sumboxlen = 0)4 1008 1 1488 4020 t
+(gsub\(/[ \\t]+$/, ""\))2 912 1 1488 4110 t
+(if \($0 != "noname"\) {)4 1008 1 1488 4200 t
+( rjust at BoxA.w\\n", $0)4 1104( \\")1 192(printf " \\"%s)2 624 3 1872 4290 t
+(printf " box invis with .e at BoxA.w ht 0 wid %g\\n",)11 2496 1 1872 4380 t
+(parm["charwid"] * \(length\($0\) + 3\))4 1632 1 2256 4470 t
+(})1488 4560 w
+(printf " BoxB: box invis ht %g wid 0 at BoxA\\n", parm["recht"])11 2976 1 1488 4650 t
+(next)1488 4740 w
+(})1392 4830 w
+( boxname = "")3 624(/./ {)1 720 2 720 4920 t
+(if \($1 \304 /:$/\) {)4 768 1 1488 5010 t
+(boxname = substr\($1, 1, length\($1\)-1\))4 1776 1 1872 5100 t
+($1 = ""; $0 = " " $0)7 960 1 1872 5190 t
+(})1488 5280 w
+(range = $1; $1 = "")5 912 1 1488 5370 t
+(gsub\(/\303[ \\t]+/, ""\); gsub\(/[ \\t]+$/, ""\); text = $0)8 2448 1 1488 5460 t
+(n = split\(range, x, "-"\))4 1152 1 1488 5550 t
+( x[1])1 1104(rlo =)1 240 2 1488 5640 t
+( rlo)1 192( :)1 144( x[2])1 480( >= 2\) ?)3 384( \(n)1 240(rhi =)1 240 6 1488 5730 t
+(cwid = \(rhi >= rlo\) ? rhi - rlo + 1 : rlo - rhi + 1)16 2448 1 1488 5820 t
+( >= 3\) ? \(0 + x[3]\) : cwid)8 1248( \(n)1 192(rwid =)1 288 3 1488 5910 t
+( x[4])1 1008(btype =)1 336 2 1488 6000 t
+(if \(btype !\304 /\303\(dot|dash|invis\)/\) btype = "solid")6 2352 1 1488 6090 t
+(textlen = parm["charwid"] * length\(text\))4 1920 1 1488 6180 t
+(boxlen = parm["bitwid"] * rwid)4 1440 1 1488 6270 t
+(dy = 0)2 288 1 1488 6360 t
+(if \(textlen > boxlen\) { # set dy, the channel for this text)12 2832 1 1488 6450 t
+(chan[maxdy+1] = -999)2 960 1 1872 6540 t
+(for \(dy = 1; chan[dy]+textlen > sumboxlen; dy++\) ;)8 2400 1 1872 6630 t
+(if \(dy > maxdy\) maxdy = dy)6 1248 1 1872 6720 t
+(if \(parm["linethrutext"] == 0\))3 1440 1 1872 6810 t
+(for \(k = 1; k <= dy; k++\))7 1200 1 2256 6900 t
+(chan[k] = sumboxlen+boxlen)2 1248 1 2640 6990 t
+(else)1872 7080 w
+(chan[dy] = sumboxlen)2 960 1 2256 7170 t
+(})1488 7260 w
+cleartomark
+showpage
+saveobj restore
+%%EndPage: 10 12
+%%Page: 11 13
+/saveobj save def
+mark
+13 pagesetup
+10 R f
+(- 11 -)2 216 1 2772 480 t
+8 CW f
+(sumboxlen += boxlen)2 912 1 1488 810 t
+(fill = "")2 432 1 1488 900 t
+(if \(parm["fill"] == "on"\) fill = " fill ")8 1968 1 1488 990 t
+( boxname)1 384( %s:",)1 336(if \(boxname != ""\) printf ")5 1296 3 1488 1080 t
+( box %s %s ht %g wid %g with .w at BoxB.e\\n",)11 2160( BoxB:)1 336(printf ")1 384 3 1488 1170 t
+(fill, btype, parm["recht"], boxlen)3 1632 1 1872 1260 t
+( at BoxB.c\\n", text)3 912( \\"%s\\")1 480(if \(dy == 0\) printf ")5 1008 3 1488 1350 t
+( \(rwid < 2\) start = "BoxB.s")6 1344( if)1 192(else {)1 288 3 1488 1440 t
+(else start = "BoxB.se - \(" parm["linedisp"] ",0\)")7 2352 1 1872 1530 t
+( from %s down %g\\n",)4 960( line)1 384(printf ")1 384 3 1872 1620 t
+(start, dy*parm["textht"])1 1152 1 2256 1710 t
+( at last line .s rjust\\n", text)6 1488( \\"%s\\\\|\\")1 624(printf ")1 384 3 1872 1800 t
+( invis with .e at last line .s ht 0 wid %g\\n",)11 2208( box)1 336(printf ")1 384 3 1872 1890 t
+(textlen)2256 1980 w
+(})1488 2070 w
+(if \(parm["addr"] \304 /\303\(left|right|both\)$/\) {)4 2064 1 1488 2160 t
+( Delta Point size)3 816( #)1 288(dp = int\(parm["addrdelta"]\))2 1296 3 1680 2250 t
+(if \(dp < 0 || dp > 9\) error\("bad addrdelta value: " dp\))12 2640 1 1680 2340 t
+( Delta Addr Height)3 864( #)1 624(dah = parm["addrht"])2 960 3 1680 2430 t
+( Parameter for Bits)3 912( #)1 768(pb = parm["addr"])2 816 3 1680 2520 t
+(if \(rlo == rhi\) {)4 816 1 1680 2610 t
+( at BoxB.s + \(0,%g\)\\n",)4 1104( \\"\\\\s-%d%s\\\\s+%d\\")1 1056(printf ")1 384 3 1872 2700 t
+(dp, rlo, dp, dah)3 768 1 2256 2790 t
+(} else {)2 384 1 1680 2880 t
+(if \(pb == "left" || pb == "both"\))7 1584 1 1872 2970 t
+(printf "\\t\\"\\\\|\\\\s-%d%s\\\\s+%d\\" ljust at BoxB.sw + \(0,%g\)\\n",)6 2928 1 2064 3060 t
+(dp, rlo, dp, dah)3 768 1 2256 3150 t
+(if \(pb == "right" || pb == "both"\))7 1632 1 1872 3240 t
+(printf "\\t\\"\\\\s-%d%s\\\\s+%d\\\\|\\" rjust at BoxB.se + \(0,%g\)\\n",)6 2928 1 2064 3330 t
+(dp, rhi, dp, dah)3 768 1 2256 3420 t
+(})1680 3510 w
+(})1488 3600 w
+(})1392 3690 w
+( if \(inlang\) error\("eof inside begin/end"\) })6 2112(END {)1 720 2 720 3780 t
+(' $*)1 192 1 720 3870 t
+10 R f
+( described)1 411( He)1 170( data formats in a document.)5 1157(I built DFORMAT for a colleague who wanted to include)9 2332 4 970 4086 t
+( of hours on Saturday; it was a)7 1218( wrote the \256rst version in a couple)7 1369( I)1 84(the problem to me on a Friday afternoon.)7 1649 4 720 4206 t
+( my colleague agreed that the output)6 1507( After)1 269( the simple version presented above.)5 1498(tad larger and dirtier than)4 1046 4 720 4326 t
+( spent six hours on Sunday adding parameters, error checking, and several other)12 3241(was in the right ballpark, I)5 1079 2 720 4446 t
+( other)1 235( program had just one user for a couple of months, but I described it to a number of)18 3397(fancinesses. The)1 688 3 720 4566 t
+( a few days polishing the program and writing this docu-)10 2274( several requests for the code, I spent)7 1493(people. After)1 553 3 720 4686 t
+( paper in your hand now, complete with code, represents roughly one staff-week of pro-)14 3676( the)1 158(ment. Thus)1 486 3 720 4806 t
+(grammer time.)1 588 1 720 4926 t
+( Field)1 265( there are several obvious choices.)5 1413(Were one to insist on putting more effort into this project,)10 2392 3 970 5082 t
+( are usually handled pretty well by the simple algorithm in the current pro-)13 3073(names that over\257ow the boxes)4 1247 2 720 5202 t
+( could build a)3 646( One)1 249( the process explicitly.)3 998(gram, but some users might like to be able to control)10 2427 4 720 5322 t
+( you don't have access to sophisti-)6 1376( If)1 117(DFORMAT-like language for other typesetting systems, such as TEX.)8 2827 3 720 5442 t
+( char-)1 235(cated output devices, you could write a program to translate from a DFORMAT-like language into a)15 4085 2 720 5562 t
+(acter array:)1 450 1 720 5682 t
+9 CW f
+(----------------)1242 5852 w
+(RR |Opcode| R1| R2|)3 1026 1 1080 5962 t
+(----------------)1242 6072 w
+( 12)1 270(0 8)1 486 2 1242 6182 t
+(--------------------------------)1242 6402 w
+( |)1 270( D2)1 378(RX |Opcode| R1| X2| B2|)4 1242 3 1080 6512 t
+(--------------------------------)1242 6622 w
+( 16 20)2 432( 12)1 270(0 8)1 486 3 1242 6732 t
+cleartomark
+showpage
+saveobj restore
+%%EndPage: 11 13
+%%Page: 12 14
+/saveobj save def
+mark
+14 pagesetup
+10 R f
+(- 12 -)2 216 1 2772 480 t
+10 B f
+(Acknowledgments)720 840 w
+10 R f
+(I am grateful for the helpful comments of Sandy Fraser, Brian Kernighan, and Ravi Sethi.)14 3586 1 970 996 t
+10 B f
+(Summary of Features Added Since Original Version)6 2233 1 720 1236 t
+10 R f
+(The)970 1392 w
+10 CW f
+(fill)1167 1392 w
+10 R f
+(style parameter now permits \256lled boxes, and the)7 2083 1 1449 1392 t
+10 CW f
+(linethrutext)3575 1392 w
+10 R f
+(parameter avoids)1 702 1 4338 1392 t
+(lines that pass through text.)4 1097 1 720 1512 t
+cleartomark
+showpage
+saveobj restore
+%%EndPage: 12 14
+%%Trailer
+done
+%%Pages: 14
+%%DocumentFonts: Courier Times-Bold Times-Italic Times-Roman Symbol
