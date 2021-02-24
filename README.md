@@ -38,7 +38,7 @@ the document into shape to match the original as much as possible.
 
 Fortunately, the memo contained the `dformat` input for all of the
 figures displayed, so it was simple enough to copy/paste the
-displayed input into real input to be processed, and then the
+displayed input into the real input to be processed, and then the
 result could be compared visually to the original.
 
 Along the way, I had to re-read the original documentation on `tbl`
@@ -91,4 +91,4 @@ GitHub so that others may also take advantage of this nice little program.
 
 #### Last Modified
 
-Thu Jun 18 20:43:07 IDT 2020
+Wed Feb 24 17:53:51 IST 2021
